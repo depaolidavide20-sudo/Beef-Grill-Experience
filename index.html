@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beef Grill Experience - Ristorante di Carne a Chiavari</title>
+  <meta name="description" content="Beef Grill Experience a Chiavari: ristorante di carne con specialità alla brace, tartare, costine, tagliata, carne argentina e wagyu alla fiamma." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#090807;
+      --bg-soft:#14110f;
+      --panel:rgba(24,18,14,.78);
+      --panel-2:rgba(255,255,255,.045);
+      --line:rgba(255,255,255,.09);
+      --text:#f7f0e8;
+      --muted:#cfbfaf;
+      --gold:#d7a35d;
+      --gold-2:#f1c27a;
+      --accent:#8d1f14;
+      --shadow:0 28px 80px rgba(0,0,0,.42);
+      --radius:28px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#080706 0%,#110f0d 100%);
+      overflow-x:hidden;
+    }
+    body.modal-open{overflow:hidden}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(8,7,6,.58);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+
+    .nav{
+      min-height:88px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--accent),#3d0e08);
+      display:grid;
+      place-items:center;
+      box-shadow:0 12px 24px rgba(141,31,20,.3);
+      font-weight:800;
+      color:#fff3e6;
+      letter-spacing:.5px;
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+
+    .brand-text strong{
+      font-family:"Cormorant Garamond",serif;
+      font-size:31px;
+      font-weight:700;
+    }
+
+    .brand-text span{
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-top:4px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .nav-links a{font-size:15px;color:#f2e8db}
+
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      padding:13px 20px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      color:#1c130a;
+      font-weight:800;
+      box-shadow:0 14px 30px rgba(215,163,93,.22);
+    }
+
+    .mobile-menu-toggle,.mobile-menu-panel{display:none}
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      background:
+        radial-gradient(circle at top, rgba(141,31,20,.18), transparent 32%),
+        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.52)),
+        url('https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+    }
+
+    .hero-grid{
+      min-height:calc(100vh - 88px);
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      align-items:end;
+      padding:118px 0 72px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0;
+      font-family:"Cormorant Garamond",serif;
+      letter-spacing:.1px;
+    }
+
+    h1{
+      font-size:clamp(54px,7vw,96px);
+      line-height:.92;
+      max-width:820px;
+      margin-bottom:18px;
+      text-shadow:0 6px 24px rgba(0,0,0,.38);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(12,10,9,.42);
+      color:#f7e7d3;
+      font-size:13px;
+      margin-bottom:18px;
+      backdrop-filter:blur(8px);
+    }
+
+    .hero-copy p{
+      max-width:720px;
+      margin:0 0 28px;
+      font-size:20px;
+      line-height:1.72;
+      color:#f2e7da;
+      text-shadow:0 3px 18px rgba(0,0,0,.32);
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:28px;
+    }
+
+    .cta,.btn-secondary,.ghost-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius:999px;
+      padding:15px 24px;
+      border:0;
+      font:inherit;
+      font-weight:800;
+      cursor:pointer;
+      transition:transform .2s ease,opacity .2s ease;
+    }
+
+    .cta:hover,.btn-secondary:hover,.ghost-btn:hover{transform:translateY(-1px)}
+
+    .cta{
+      color:#1c130a;
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      box-shadow:0 12px 30px rgba(215,163,93,.25);
+    }
+
+    .btn-secondary{
+      color:#fff;
+      background:transparent;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .ghost-btn{
+      color:var(--gold-2);
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      max-width:860px;
+    }
+
+    .stat{
+      padding:18px;
+      border-radius:20px;
+      background:rgba(17,13,11,.46);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(8px);
+      box-shadow:var(--shadow);
+    }
+
+    .stat strong{display:block;font-size:28px;margin-bottom:6px}
+    .stat span{display:block;font-size:14px;line-height:1.5;color:#f1e3d3}
+
+    .booking-card{
+      background:rgba(16,13,11,.76);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:32px;
+      padding:28px;
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+      margin-left:auto;
+      max-width:500px;
+    }
+
+    .booking-card h3{font-size:35px;margin-bottom:10px}
+    .booking-card p{margin:0 0 18px;color:var(--muted);line-height:1.7}
+
+    .form{display:grid;gap:12px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+
+    input,textarea,select{
+      width:100%;
+      min-width:0;
+      padding:15px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      font:inherit;
+      outline:none;
+      appearance:none;
+      -webkit-appearance:none;
+    }
+
+    input::placeholder,textarea::placeholder{color:#ccb8a4}
+    .hint{font-size:12px;color:var(--muted);line-height:1.55}
+    .section{padding:96px 0}
+
+    .section-title{max-width:780px;margin-bottom:30px}
+    .kicker{
+      display:block;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--gold);
+      font-size:12px;
+    }
+
+    .section-title h2{font-size:clamp(40px,5vw,60px);margin-bottom:12px}
+    .section-title p{margin:0;color:var(--muted);line-height:1.8;font-size:17px}
+
+    .story{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .panel{
+      background:var(--panel-2);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .story-copy{padding:36px}
+
+    .story-copy p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.86;
+      font-size:17px;
+    }
+    .story-copy p + p{margin-top:16px}
+
+    .story-stats{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .story-visual{
+      min-height:570px;
+      overflow:hidden;
+      border-radius:28px;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.22)),
+        url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      position:relative;
+    }
+
+    .story-badge{
+      position:absolute;
+      left:24px;
+      bottom:24px;
+      max-width:280px;
+      padding:20px;
+      border-radius:22px;
+      background:rgba(16,12,10,.75);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(8px);
+    }
+
+    .story-badge strong{display:block;font-size:24px;margin-bottom:6px}
+    .story-badge span{color:#f2e3d4;line-height:1.55;font-size:14px}
+
+    .signature-header{
+      text-align:center;
+      max-width:950px;
+      margin:0 auto 38px;
+    }
+
+    .signature-header h2{
+      font-size:clamp(42px,5.8vw,76px);
+      margin-bottom:14px;
+    }
+
+    .signature-header .highlight{color:var(--gold-2);font-style:italic;font-weight:500}
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:28px;
+    }
+
+    .dish-card{
+      min-height:420px;
+      border-radius:34px;
+      overflow:hidden;
+      position:relative;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:flex-end;
+      background-size:cover;
+      background-position:center;
+    }
+
+    .dish-overlay{
+      width:100%;
+      padding:30px;
+      background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.18) 36%,rgba(0,0,0,.78) 100%);
+    }
+
+    .dish-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin-bottom:12px;
+    }
+
+    .dish-top h3{font-size:48px;line-height:.95;max-width:72%}
+    .dish-price{font-size:25px;color:var(--gold-2);white-space:nowrap}
+    .dish-line{width:126px;height:2px;background:rgba(255,255,255,.75);margin-bottom:18px}
+    .dish-overlay p{margin:0 0 18px;color:#f8eee3;line-height:1.72;font-size:17px}
+
+    .tags{display:flex;flex-wrap:wrap;gap:10px}
+    .tags span{
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.08);
+      font-size:14px;
+    }
+
+    .experience-box{
+      padding:36px;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .experience-copy p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.85;
+      font-size:17px;
+    }
+    .experience-copy p + p{margin-top:14px}
+
+    .feature-list{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .feature{
+      padding:18px 20px;
+      border-radius:20px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .feature strong{display:block;font-size:18px;margin-bottom:6px}
+    .feature span{display:block;color:var(--muted);line-height:1.65;font-size:14px}
+
+    .experience-visual{
+      min-height:520px;
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.2)),
+        url('https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .popular-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .popular-item{padding:24px}
+    .popular-item h3{font-size:30px;margin-bottom:10px}
+    .popular-item p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .review{padding:26px;position:relative}
+    .review .stars{color:var(--gold-2);letter-spacing:2px;margin-bottom:16px}
+    .review p{margin:0 0 18px;color:#f8efe5;line-height:1.8}
+    .review strong{display:block;font-size:15px}
+    .review span{color:var(--muted);font-size:14px}
+    .review-badge{
+      position:absolute;
+      top:16px;
+      right:16px;
+      color:var(--gold-2);
+      font-size:13px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.09);
+    }
+
+    .score-line{
+      text-align:center;
+      margin-top:22px;
+      color:var(--gold-2);
+      font-size:18px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:20px;
+    }
+
+    .contact-card{padding:32px}
+    .contact-list{display:grid;gap:16px;margin:24px 0}
+    .contact-item{padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .contact-item:last-child{border-bottom:0;padding-bottom:0}
+    .contact-item small{
+      display:block;
+      margin-bottom:6px;
+      color:var(--gold-2);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      font-size:11px;
+    }
+
+    .contact-item strong,.contact-item a{font-size:18px}
+    .contact-item p{margin:0;color:var(--muted);line-height:1.72}
+
+    .map-card{
+      min-height:100%;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:#111;
+    }
+
+    .map-card iframe{width:100%;height:100%;min-height:520px;border:0;display:block}
+
+    footer{
+      padding:30px 0 42px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .footer-row{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      text-align:center;
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(7,6,5,.78);
+      backdrop-filter:blur(8px);
+      z-index:200;
+    }
+
+    .modal.open{display:flex}
+
+    .modal-box{
+      position:relative;
+      width:min(620px,100%);
+      max-height:min(90vh,820px);
+      overflow:auto;
+      background:linear-gradient(180deg,#181410,#0f0d0b);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .modal-close{
+      position:absolute;
+      top:14px;
+      right:14px;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.12);
+      background:transparent;
+      color:#fff;
+      cursor:pointer;
+      font-size:18px;
+    }
+
+    .modal-box h3{font-size:42px;margin-bottom:8px}
+    .modal-box p{margin:0 0 20px;color:var(--muted);line-height:1.7}
+    .mobile-bookbar{display:none}
+
+    @media (max-width:980px){
+      .hero-grid,.story,.experience-box,.contact-grid{grid-template-columns:1fr}
+      .booking-card{margin-left:0;max-width:none}
+      .menu-grid,.reviews-grid,.popular-grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+    }
+
+    @media (max-width:780px){
+      .container{width:min(var(--max),calc(100% - 18px))}
+      .topbar{background:linear-gradient(180deg,rgba(8,7,6,.97),rgba(8,7,6,.9))}
+      .nav{
+        min-height:auto;
+        display:grid;
+        grid-template-columns:1fr auto;
+        align-items:center;
+        gap:10px;
+        padding:10px 0;
+      }
+      .nav-links,.nav-cta{display:none}
+      .mobile-menu-toggle{
+        display:inline-flex;
+        width:46px;
+        height:46px;
+        align-items:center;
+        justify-content:center;
+        border-radius:14px;
+        background:rgba(255,255,255,.08);
+        color:#fff;
+        border:1px solid rgba(255,255,255,.12);
+        cursor:pointer;
+      }
+      .mobile-menu-panel{
+        position:fixed;
+        top:74px;
+        left:12px;
+        right:12px;
+        z-index:120;
+        display:none;
+        background:rgba(14,11,8,.97);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:20px;
+        padding:14px;
+        box-shadow:0 22px 40px rgba(0,0,0,.38);
+      }
+      .mobile-menu-panel.open{display:block}
+      .mobile-menu-panel a{
+        display:block;
+        padding:14px 12px;
+        border-bottom:1px solid rgba(255,255,255,.06);
+        font-size:15px;
+      }
+      .mobile-menu-panel a:last-child{border-bottom:0}
+      .brand-text strong{font-size:24px}
+      .brand-text span{font-size:10px}
+      .brand-mark{width:42px;height:42px;border-radius:14px}
+      .hero{min-height:62vh;background-position:center center}
+      .hero-grid{padding:28px 0 16px;min-height:62vh;align-items:center}
+      .hero-copy{
+        width:100%;
+        min-height:calc(62vh - 90px);
+        padding:18px 16px 14px;
+        border-radius:18px;
+        background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.44) 44%,rgba(0,0,0,.84));
+      }
+      h1{font-size:34px;line-height:1.02;max-width:100%;margin-bottom:10px}
+      .hero-copy p{font-size:14px;line-height:1.55;margin-bottom:12px}
+      .eyebrow{font-size:11px;padding:7px 10px;margin-bottom:12px}
+      .hero-actions{margin-bottom:0}
+      .cta,.btn-secondary,.ghost-btn{
+        width:100%;
+        min-height:52px;
+        padding:14px 18px;
+        font-size:15px;
+      }
+      .booking-card{display:none}
+      .section{padding:40px 0}
+      .section-title{margin-bottom:16px}
+      .section-title h2,.signature-header h2{font-size:32px;line-height:1.03}
+      .section-title p,.story-copy p,.experience-copy p,.popular-item p,.review p,.contact-item p{font-size:14px!important;line-height:1.65!important}
+      .story-copy,.experience-box,.contact-card,.popular-item,.review,.dish-overlay{padding:18px}
+      .story-visual{min-height:280px}
+      .experience-visual{min-height:300px}
+      .story-badge{left:16px;right:16px;bottom:16px;max-width:none;padding:16px}
+      .dish-card{min-height:280px;border-radius:24px}
+      .dish-top{flex-direction:column;align-items:flex-start;gap:8px}
+      .dish-top h3{font-size:30px;max-width:100%}
+      .dish-price{font-size:20px}
+      .dish-line{width:90px;margin-bottom:14px}
+      .tags span{padding:8px 12px;font-size:12px}
+      .grid-2{grid-template-columns:1fr}
+      .modal{padding:12px}
+      .modal-box{padding:20px;border-radius:22px;max-height:88vh}
+      .modal-box h3{font-size:28px}
+      .mobile-bookbar{
+        display:flex;
+        position:fixed;
+        left:10px;
+        right:10px;
+        bottom:12px;
+        z-index:110;
+        gap:10px;
+        padding:10px;
+        border-radius:22px;
+        background:rgba(16,13,10,.95);
+        backdrop-filter:blur(12px);
+        border:1px solid rgba(255,255,255,.08);
+        box-shadow:0 18px 36px rgba(0,0,0,.34);
+      }
+      .mobile-bookbar .cta,.mobile-bookbar .btn-secondary{min-height:50px;border-radius:16px;padding:12px 14px;font-size:15px}
+      .mobile-bookbar .cta{flex:1}
+      .mobile-bookbar .btn-secondary{width:auto;min-width:62px}
+      body.modal-open .mobile-bookbar{display:none!important}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="Beef Grill Experience">
+        <div class="brand-mark">BG</div>
+        <div class="brand-text">
+          <strong>Beef Grill Experience</strong>
+          <span>Steakhouse • Chiavari</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#storia">Chi siamo</a>
+        <a href="#specialita">Specialità</a>
+        <a href="#esperienza">L'esperienza</a>
+        <a href="#recensioni">Recensioni</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+
+      <a href="#contatti" class="nav-cta">Scopri il locale</a>
+
+      <button class="mobile-menu-toggle" type="button" onclick="toggleMobileMenu()" aria-label="Apri menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu-panel" id="mobileMenuPanel">
+    <a href="#storia" onclick="closeMobileMenu()">Chi siamo</a>
+    <a href="#specialita" onclick="closeMobileMenu()">Specialità</a>
+    <a href="#esperienza" onclick="closeMobileMenu()">L'esperienza</a>
+    <a href="#recensioni" onclick="closeMobileMenu()">Recensioni</a>
+    <a href="#contatti" onclick="closeMobileMenu()">Contatti</a>
+  </div>
+
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">★ 4,5 su 5 • 182 recensioni • Fronte porto di Chiavari</div>
+        <h1>La carne come esperienza.<br>Non solo come cena.</h1>
+        <p>
+          Beef Grill Experience è il ristorante per chi ama la brace, i tagli selezionati e i sapori intensi.
+          Tartare, costine, tagliata, carne argentina, wagyu alla fiamma e grigliate pensate per chi cerca qualità vera.
+        </p>
+
+        <div class="hero-actions">
+          <button class="cta" onclick="openModal()">Prenota ora</button>
+          <a class="btn-secondary" href="#specialita">Guarda le specialità</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Tris di Tartare</strong>
+            <span>Uno dei piatti più richiesti per iniziare la serata con eleganza e carattere.</span>
+          </div>
+          <div class="stat">
+            <strong>Costine & Tagliata</strong>
+            <span>Cotture precise, carne succosa e una proposta pensata per veri amanti della griglia.</span>
+          </div>
+          <div class="stat">
+            <strong>Wagyu alla Fiamma</strong>
+            <span>La firma scenografica del locale: gusto, materia prima e impatto al tavolo.</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="booking-card panel">
+        <h3>Prenota il tuo tavolo</h3>
+        <p>Compila il form e apri WhatsApp con un messaggio già pronto. Ti basta sostituire il numero con quello del ristorante.</p>
+
+        <form class="form booking-form" onsubmit="submitBooking(event)">
+          <input type="text" name="name" placeholder="Nome e cognome" required>
+
+          <div class="grid-2">
+            <input type="tel" name="phone" placeholder="Telefono" required>
+            <input type="number" name="guests" placeholder="Persone" min="1" max="20" required>
+          </div>
+
+          <div class="grid-2">
+            <input type="date" name="date" required>
+            <input type="time" name="time" required>
+          </div>
+
+          <textarea rows="4" name="notes" placeholder="Richieste speciali, cottura preferita, allergie, occasioni..."></textarea>
+
+          <button class="cta" type="submit">Invia richiesta</button>
+          <div class="hint">Nel codice trovi un numero WhatsApp segnaposto da sostituire con quello reale del ristorante.</div>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="storia">
+    <div class="container story">
+      <div class="story-copy panel">
+        <div class="section-title">
+          <span class="kicker">Il concept</span>
+          <h2>Una steakhouse contemporanea nel cuore di Chiavari.</h2>
+          <p>
+            Beef Grill Experience nasce per offrire un percorso dedicato alla carne: selezione accurata,
+            tagli di carattere, cotture ben eseguite e un'atmosfera calda, conviviale e distintiva.
+          </p>
+        </div>
+
+        <p>
+          Il locale viene ricordato dai clienti per la qualità molto elevata della carne, per le costine che si sciolgono in bocca,
+          per la carne argentina e per un servizio gentile e accogliente. L'idea del sito è trasmettere proprio questo:
+          un ristorante che unisce tecnica, materia prima e personalità.
+        </p>
+        <p>
+          Perfetto per una cena di coppia, una serata tra amici o per chi vuole assaggiare diversi tagli in un'unica esperienza.
+        </p>
+
+        <div class="story-stats">
+          <div class="stat" style="background:rgba(255,255,255,.04)">
+            <strong>182</strong>
+            <span>Recensioni con media molto alta e commenti positivi su carne e servizio.</span>
+          </div>
+          <div class="stat" style="background:rgba(255,255,255,.04)">
+            <strong>Porto di Chiavari</strong>
+            <span>Posizione percepita come scenografica e ideale per una cena di atmosfera.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-visual">
+        <div class="story-badge">
+          <strong>Qualità della carne molto elevata.</strong>
+          <span>Una delle frasi che meglio descrive la percezione del locale da parte dei clienti.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="specialita">
+    <div class="container">
+      <div class="signature-header">
+        <span class="kicker" style="font-size:14px;letter-spacing:3px;">Piatti iconici</span>
+        <h2>
+          <span>Brace, tartare e tagli selezionati,</span>
+          <span class="highlight">serviti con identità</span>
+        </h2>
+        <p>
+          Una selezione costruita sui piatti più popolari emersi dai dati che hai condiviso: perfetta per un sito che deve vendere desiderio ancora prima del tavolo.
+        </p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="dish-card" style="background-image:url('https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1400&q=80')">
+          <div class="dish-overlay">
+            <div class="dish-top">
+              <h3>Tris di Tartare</h3>
+              <div class="dish-price">Signature</div>
+            </div>
+            <div class="dish-line"></div>
+            <p>Un antipasto scenografico e raffinato, ideale per raccontare subito la qualità della materia prima e l'anima carnivora del locale.</p>
+            <div class="tags">
+              <span>Antipasto iconico</span>
+              <span>Molto richiesto</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80')">
+          <div class="dish-overlay">
+            <div class="dish-top">
+              <h3>Wagyu alla Fiamma</h3>
+              <div class="dish-price">Premium</div>
+            </div>
+            <div class="dish-line"></div>
+            <p>Il piatto che aggiunge effetto wow al sito: intensità, morbidezza e una presentazione perfetta per una comunicazione di fascia alta.</p>
+            <div class="tags">
+              <span>Effetto scenico</span>
+              <span>Carne premium</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card" style="background-image:url('https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1400&q=80')">
+          <div class="dish-overlay">
+            <div class="dish-top">
+              <h3>Costine</h3>
+              <div class="dish-price">Best Seller</div>
+            </div>
+            <div class="dish-line"></div>
+            <p>Tenere, succose e memorabili: nelle recensioni emergono come uno dei piatti più apprezzati e più facili da desiderare.</p>
+            <div class="tags">
+              <span>Carne succosa</span>
+              <span>Amatissime</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card" style="background-image:url('https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=1400&q=80')">
+          <div class="dish-overlay">
+            <div class="dish-top">
+              <h3>Tagliata & Carne Argentina</h3>
+              <div class="dish-price">House Favorite</div>
+            </div>
+            <div class="dish-line"></div>
+            <p>Il cuore dell'esperienza Beef Grill: tagli intensi, cotture precise e una proposta pensata per chi cerca gusto netto e soddisfazione piena.</p>
+            <div class="tags">
+              <span>Tagli selezionati</span>
+              <span>Stile argentino</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="esperienza">
+    <div class="container">
+      <div class="experience-box panel">
+        <div class="experience-copy">
+          <div class="section-title" style="margin-bottom:18px;">
+            <span class="kicker">L'esperienza Beef Grill</span>
+            <h2>Più di un menu: una cena costruita attorno alla carne.</h2>
+          </div>
+
+          <p>
+            Il sito valorizza i punti forti percepiti dai clienti: qualità della carne, varietà dei tagli, menù pensati per condividere,
+            servizio cordiale e atmosfera sul porto. Questo posizionamento è forte perché racconta un ristorante specializzato,
+            non generico.
+          </p>
+          <p>
+            Ho inserito anche un tono più premium e maschile rispetto alla pizzeria, con colori caldi, ombre profonde e immagini materiche,
+            così da differenziare chiaramente i due progetti pur mantenendo la stessa cura visiva.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature">
+              <strong>Menu pensato per condividere</strong>
+              <span>Perfetto per valorizzare grigliata di carne, tagli assortiti, crostino con salsiccia argentina e percorsi degustazione.</span>
+            </div>
+            <div class="feature">
+              <strong>Servizio che resta impresso</strong>
+              <span>Nelle recensioni compaiono spesso gentilezza, simpatia e accoglienza dei proprietari.</span>
+            </div>
+            <div class="feature">
+              <strong>Finale goloso</strong>
+              <span>Dolci della casa e chiusura di esperienza coerente con un locale che punta a far ricordare la serata.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-visual"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="kicker">Altri spunti menu</span>
+        <h2>Altri piatti da mettere in evidenza.</h2>
+        <p>Questi elementi possono diventare card aggiuntive, highlight nel menu o contenuti per i social collegati al sito.</p>
+      </div>
+
+      <div class="popular-grid">
+        <article class="popular-item panel">
+          <h3>Grigliata di Carne</h3>
+          <p>Ideale per tavoli conviviali e per raccontare abbondanza, brace e varietà in una sola immagine.</p>
+        </article>
+        <article class="popular-item panel">
+          <h3>Crostino con Salsiccia Argentina</h3>
+          <p>Un antipasto distintivo che rafforza il legame con i sapori sudamericani già presenti nella proposta del locale.</p>
+        </article>
+        <article class="popular-item panel">
+          <h3>Dolci della Casa</h3>
+          <p>Da usare come chiusura elegante del percorso e per aumentare la percezione di esperienza completa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recensioni">
+    <div class="container">
+      <div class="section-title" style="margin-bottom:18px;">
+        <span class="kicker">Recensioni</span>
+        <h2>Le parole che vendono meglio del marketing.</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <article class="review panel">
+          <div class="review-badge">Google</div>
+          <div class="stars">★★★★★</div>
+          <p>“Qualità della carne molto elevata ed una cottura perfetta!!!”</p>
+          <strong>Cliente</strong>
+          <span>Recensione online</span>
+        </article>
+
+        <article class="review panel">
+          <div class="review-badge">Google</div>
+          <div class="stars">★★★★★</div>
+          <p>“Un ristorante di carne spettacolare, i proprietari molto gentili simpatici.”</p>
+          <strong>Cliente</strong>
+          <span>Recensione online</span>
+        </article>
+
+        <article class="review panel">
+          <div class="review-badge">Google</div>
+          <div class="stars">★★★★★</div>
+          <p>“Bel locale sul porto di Chiavari, qualità della carne davvero ottima, le costine si scioglievano in bocca.”</p>
+          <strong>Cliente</strong>
+          <span>Recensione online</span>
+        </article>
+      </div>
+
+      <div class="score-line">★ 4,5 su Google • 182 recensioni</div>
+    </div>
+  </section>
+
+  <section class="section" id="contatti">
+    <div class="container contact-grid">
+      <div class="contact-card panel">
+        <div class="section-title" style="margin-bottom:0;">
+          <span class="kicker">Contatti</span>
+          <h2>Porta la tua fame nel posto giusto.</h2>
+          <p>Ho lasciato i dati sensibili come telefono e indirizzo precisi in formato facilmente modificabile, così puoi sostituirli in pochi secondi.</p>
+        </div>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <small>Zona</small>
+            <p>Fronte porto di Chiavari<br>Chiavari, Liguria</p>
+          </div>
+          <div class="contact-item">
+            <small>Telefono</small>
+            <a href="tel:+390000000000"><strong>+39 000 000 0000</strong></a>
+          </div>
+          <div class="contact-item">
+            <small>WhatsApp</small>
+            <p>Numero da sostituire nel codice: <strong>+39 000 000 0000</strong></p>
+          </div>
+          <div class="contact-item">
+            <small>Orari</small>
+            <p>Inserisci qui gli orari reali del ristorante<br>Es. Mar - Dom: 19:30 - 23:30</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="cta" onclick="openModal()">Prenota via WhatsApp</button>
+          <a class="btn-secondary" href="tel:+390000000000">Chiama ora</a>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps?q=porto%20di%20Chiavari&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Beef Grill Experience</div>
+      <div>Steakhouse • Chiavari • Fronte porto</div>
+      <div>Telefono e orari da personalizzare prima della pubblicazione</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="bookingModal">
+    <div class="modal-box">
+      <button class="modal-close" type="button" onclick="closeModal()">×</button>
+      <h3>Prenota il tuo tavolo</h3>
+      <p>Compila il form e verrai reindirizzato su WhatsApp con il messaggio già pronto da inviare.</p>
+
+      <form class="form booking-form" onsubmit="submitBooking(event)">
+        <div class="grid-2">
+          <input type="text" name="name" placeholder="Nome e cognome" required>
+          <input type="tel" name="phone" placeholder="Telefono" required>
+        </div>
+
+        <div class="grid-2">
+          <input type="date" name="date" required>
+          <input type="time" name="time" required>
+        </div>
+
+        <div class="grid-2">
+          <input type="number" name="guests" placeholder="Numero di persone" min="1" max="20" required>
+          <select name="preference">
+            <option value="">Preferenza tavolo</option>
+            <option value="Sala interna">Sala interna</option>
+            <option value="Vicino finestra">Vicino finestra</option>
+            <option value="Indifferente">Indifferente</option>
+          </select>
+        </div>
+
+        <textarea rows="4" name="notes" placeholder="Richieste speciali, cottura preferita, allergie, occasioni..."></textarea>
+
+        <button class="cta" style="width:100%;margin-top:4px" type="submit">Invia su WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="mobile-bookbar">
+    <button class="cta" onclick="openModal()">Prenota ora</button>
+    <a class="btn-secondary" href="#contatti">Info</a>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = '390000000000';
+
+    function buildMessage(form){
+      const fd = new FormData(form);
+      const name = fd.get('name') || '';
+      const phone = fd.get('phone') || '';
+      const guests = fd.get('guests') || '';
+      const date = fd.get('date') || '';
+      const time = fd.get('time') || '';
+      const preference = fd.get('preference') || 'Nessuna preferenza';
+      const notes = fd.get('notes') || 'Nessuna nota';
+
+      return `Ciao Beef Grill Experience, vorrei prenotare un tavolo.%0A%0A` +
+        `Nome: ${encodeURIComponent(name)}%0A` +
+        `Telefono: ${encodeURIComponent(phone)}%0A` +
+        `Persone: ${encodeURIComponent(guests)}%0A` +
+        `Data: ${encodeURIComponent(date)}%0A` +
+        `Ora: ${encodeURIComponent(time)}%0A` +
+        `Preferenza: ${encodeURIComponent(preference)}%0A` +
+        `Note: ${encodeURIComponent(notes)}`;
+    }
+
+    function submitBooking(event){
+      event.preventDefault();
+      const form = event.target;
+      const message = buildMessage(form);
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+    }
+
+    function openModal(){
+      document.getElementById('bookingModal').classList.add('open');
+      document.body.classList.add('modal-open');
+      closeMobileMenu();
+    }
+
+    function closeModal(){
+      document.getElementById('bookingModal').classList.remove('open');
+      document.body.classList.remove('modal-open');
+    }
+
+    function toggleMobileMenu(){
+      document.getElementById('mobileMenuPanel').classList.toggle('open');
+    }
+
+    function closeMobileMenu(){
+      document.getElementById('mobileMenuPanel').classList.remove('open');
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if(event.key === 'Escape') closeModal();
+    });
+
+    document.getElementById('bookingModal').addEventListener('click', (event) => {
+      if(event.target.id === 'bookingModal') closeModal();
+    });
+  </script>
+</body>
+</html>
