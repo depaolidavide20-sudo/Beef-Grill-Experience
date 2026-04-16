@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#090807;
@@ -27,6 +28,7 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Inter,sans-serif;
@@ -34,6 +36,7 @@
       background:linear-gradient(180deg,#080706 0%,#110f0d 100%);
       overflow-x:hidden;
     }
+
     body.modal-open{overflow:hidden}
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%}
@@ -43,7 +46,7 @@
       position:sticky;
       top:0;
       z-index:50;
-      background:rgba(8,7,6,.58);
+      background:rgba(8,7,6,.72);
       backdrop-filter:blur(12px);
       border-bottom:1px solid rgba(255,255,255,.05);
     }
@@ -59,21 +62,44 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:16px;
       min-width:0;
     }
 
+    .brand-only{
+      gap:0;
+    }
+
     .brand-mark{
-      width:48px;
-      height:48px;
-      border-radius:16px;
-      background:linear-gradient(135deg,var(--accent),#3d0e08);
-      display:grid;
-      place-items:center;
-      box-shadow:0 12px 24px rgba(141,31,20,.3);
-      font-weight:800;
-      color:#fff3e6;
-      letter-spacing:.5px;
+      width:180px;
+      height:96px;
+      border-radius:22px;
+      background:rgba(8,7,6,.72);
+      border:1px solid rgba(215,163,93,.22);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 10px 28px rgba(0,0,0,.28);
+      overflow:hidden;
+      padding:4px;
+      flex-shrink:0;
+      backdrop-filter:blur(12px);
+    }
+
+    .brand-only .brand-mark{
+      width:190px;
+      height:100px;
+      border-radius:22px;
+      padding:4px;
+    }
+
+    .brand-mark img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      filter:none;
+      image-rendering:auto;
     }
 
     .brand-text{
@@ -86,14 +112,15 @@
       font-family:"Cormorant Garamond",serif;
       font-size:31px;
       font-weight:700;
+      letter-spacing:.2px;
     }
 
     .brand-text span{
       color:var(--muted);
       font-size:12px;
-      letter-spacing:2px;
+      letter-spacing:2.2px;
       text-transform:uppercase;
-      margin-top:4px;
+      margin-top:6px;
     }
 
     .nav-links{
@@ -104,7 +131,10 @@
       align-items:center;
     }
 
-    .nav-links a{font-size:15px;color:#f2e8db}
+    .nav-links a{
+      font-size:15px;
+      color:#f2e8db;
+    }
 
     .nav-cta{
       display:inline-flex;
@@ -146,7 +176,10 @@
       color:#1c130a;
     }
 
-    .mobile-menu-toggle,.mobile-menu-panel{display:none}
+    .mobile-menu-toggle,
+    .mobile-menu-panel{
+      display:none;
+    }
 
     .hero{
       min-height:100vh;
@@ -225,7 +258,9 @@
       transition:transform .2s ease,opacity .2s ease;
     }
 
-    .cta:hover,.btn-secondary:hover,.ghost-btn:hover,.review-cta:hover{transform:translateY(-1px)}
+    .cta:hover,.btn-secondary:hover,.ghost-btn:hover,.review-cta:hover{
+      transform:translateY(-1px);
+    }
 
     .cta,.review-cta{
       color:#1c130a;
@@ -261,8 +296,18 @@
       box-shadow:var(--shadow);
     }
 
-    .stat strong{display:block;font-size:28px;margin-bottom:6px}
-    .stat span{display:block;font-size:14px;line-height:1.5;color:#f1e3d3}
+    .stat strong{
+      display:block;
+      font-size:28px;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      font-size:14px;
+      line-height:1.5;
+      color:#f1e3d3;
+    }
 
     .booking-card{
       background:rgba(16,13,11,.76);
@@ -299,7 +344,11 @@
     .hint{font-size:12px;color:var(--muted);line-height:1.55}
     .section{padding:96px 0}
 
-    .section-title{max-width:780px;margin-bottom:30px}
+    .section-title{
+      max-width:780px;
+      margin-bottom:30px;
+    }
+
     .kicker{
       display:block;
       margin-bottom:10px;
@@ -309,8 +358,17 @@
       font-size:12px;
     }
 
-    .section-title h2{font-size:clamp(40px,5vw,60px);margin-bottom:12px}
-    .section-title p{margin:0;color:var(--muted);line-height:1.8;font-size:17px}
+    .section-title h2{
+      font-size:clamp(40px,5vw,60px);
+      margin-bottom:12px;
+    }
+
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:17px;
+    }
 
     .story{
       display:grid;
@@ -334,6 +392,7 @@
       line-height:1.86;
       font-size:17px;
     }
+
     .story-copy p + p{margin-top:16px}
 
     .story-stats{
@@ -387,7 +446,11 @@
       margin-bottom:14px;
     }
 
-    .signature-header .highlight{color:var(--gold-2);font-style:italic;font-weight:500}
+    .signature-header .highlight{
+      color:var(--gold-2);
+      font-style:italic;
+      font-weight:500;
+    }
 
     .menu-grid{
       display:grid;
@@ -443,9 +506,7 @@
       background-size:108%;
     }
 
-    .dish-card:hover::before{
-      opacity:1;
-    }
+    .dish-card:hover::before{opacity:1}
 
     .dish-card:hover::after{
       background:linear-gradient(180deg,rgba(0,0,0,.00) 0%,rgba(0,0,0,.10) 34%,rgba(0,0,0,.80) 100%);
@@ -492,7 +553,6 @@
     .tags{
       display:none;
     }
-
     .tasting-wrap{
       margin-top:30px;
       display:flex;
@@ -552,9 +612,7 @@
       z-index:300;
     }
 
-    .tasting-modal.open{
-      display:flex;
-    }
+    .tasting-modal.open{display:flex}
 
     .tasting-box{
       position:relative;
@@ -593,9 +651,7 @@
       margin-bottom:22px;
     }
 
-    .tasting-head .kicker{
-      margin-bottom:8px;
-    }
+    .tasting-head .kicker{margin-bottom:8px}
 
     .tasting-head h3{
       font-size:44px;
@@ -634,13 +690,8 @@
       border-color:transparent;
     }
 
-    .tasting-panel{
-      display:none;
-    }
-
-    .tasting-panel.active{
-      display:block;
-    }
+    .tasting-panel{display:none}
+    .tasting-panel.active{display:block}
 
     .tasting-card{
       background:rgba(255,255,255,.04);
@@ -679,9 +730,7 @@
       text-align:right;
     }
 
-    .tasting-section + .tasting-section{
-      margin-top:18px;
-    }
+    .tasting-section + .tasting-section{margin-top:18px}
 
     .tasting-section small{
       display:block;
@@ -736,6 +785,7 @@
     .review p{margin:0 0 18px;color:#f8efe5;line-height:1.8}
     .review strong{display:block;font-size:15px}
     .review span{color:var(--muted);font-size:14px}
+
     .review-badge{
       position:absolute;
       top:16px;
@@ -781,8 +831,17 @@
 
     .contact-card{padding:32px}
     .contact-list{display:grid;gap:16px;margin:24px 0}
-    .contact-item{padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .contact-item:last-child{border-bottom:0;padding-bottom:0}
+
+    .contact-item{
+      padding-bottom:16px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-item:last-child{
+      border-bottom:0;
+      padding-bottom:0;
+    }
+
     .contact-item small{
       display:block;
       margin-bottom:6px;
@@ -804,7 +863,13 @@
       background:#111;
     }
 
-    .map-card iframe{width:100%;height:100%;min-height:520px;border:0;display:block}
+    .map-card iframe{
+      width:100%;
+      height:100%;
+      min-height:520px;
+      border:0;
+      display:block;
+    }
 
     footer{
       padding:34px 0 42px;
@@ -966,6 +1031,7 @@
     @media (max-width:780px){
       .container{width:min(var(--max),calc(100% - 18px))}
       .topbar{background:linear-gradient(180deg,rgba(8,7,6,.97),rgba(8,7,6,.9))}
+
       .nav{
         min-height:auto;
         display:grid;
@@ -974,7 +1040,9 @@
         gap:10px;
         padding:10px 0;
       }
+
       .nav-links,.nav-cta,.lang-switch{display:none}
+
       .mobile-menu-toggle{
         display:inline-flex;
         width:46px;
@@ -987,6 +1055,7 @@
         border:1px solid rgba(255,255,255,.12);
         cursor:pointer;
       }
+
       .mobile-menu-panel{
         position:fixed;
         top:74px;
@@ -1000,7 +1069,9 @@
         padding:14px;
         box-shadow:0 22px 40px rgba(0,0,0,.38);
       }
+
       .mobile-menu-panel.open{display:block}
+
       .mobile-menu-panel a,
       .mobile-menu-panel button{
         display:block;
@@ -1016,13 +1087,20 @@
         border-top:0;
         cursor:pointer;
       }
+
       .mobile-menu-panel a:last-child,
       .mobile-menu-panel button:last-child{border-bottom:0}
-      .brand-text strong{font-size:24px}
-      .brand-text span{font-size:10px}
-      .brand-mark{width:42px;height:42px;border-radius:14px}
+
+      .brand-only .brand-mark{
+        width:140px;
+        height:76px;
+        border-radius:18px;
+        padding:4px;
+      }
+
       .hero{min-height:62vh;background-position:center center}
       .hero-grid{padding:28px 0 16px;min-height:62vh;align-items:center}
+
       .hero-copy{
         width:100%;
         min-height:calc(62vh - 90px);
@@ -1030,10 +1108,12 @@
         border-radius:18px;
         background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.44) 44%,rgba(0,0,0,.84));
       }
+
       h1{font-size:34px;line-height:1.02;max-width:100%;margin-bottom:10px}
       .hero-copy p{font-size:14px;line-height:1.55;margin-bottom:12px}
       .eyebrow{font-size:11px;padding:7px 10px;margin-bottom:12px}
       .hero-actions{margin-bottom:0}
+
       .cta,.btn-secondary,.ghost-btn,.review-cta{
         width:100%;
         min-height:52px;
@@ -1043,55 +1123,59 @@
       .booking-card{display:none}
       .section{padding:40px 0}
       .section-title{margin-bottom:16px}
-      .section-title h2,.signature-header h2{font-size:32px;line-height:1.03}
-      .section-title p,.story-copy p,.popular-item p,.review p,.contact-item p{font-size:14px!important;line-height:1.65!important}
-      .story-copy,.contact-card,.popular-item,.review,.dish-overlay{padding:18px}
+
+      .section-title h2,
+      .signature-header h2{
+        font-size:32px;
+        line-height:1.03;
+      }
+
+      .section-title p,
+      .story-copy p,
+      .popular-item p,
+      .review p,
+      .contact-item p{
+        font-size:14px!important;
+        line-height:1.65!important;
+      }
+
+      .story-copy,
+      .contact-card,
+      .popular-item,
+      .review,
+      .dish-overlay{
+        padding:18px;
+      }
+
       .story-visual{min-height:280px}
       .story-visual img{min-height:280px}
-      .story-badge{left:16px;right:16px;bottom:16px;max-width:none;padding:16px}
+
+      .story-badge{
+        left:16px;
+        right:16px;
+        bottom:16px;
+        max-width:none;
+        padding:16px;
+      }
+
       .menu-grid{grid-template-columns:1fr 1fr;gap:12px}
       .dish-card{min-height:220px;border-radius:24px}
+
       .dish-card:hover{
         transform:none;
         background-size:cover;
       }
-      .dish-top{display:block}
+
       .dish-top h3{font-size:30px;max-width:100%}
-      .dish-top h3::after{
-        width:42px;
-        margin-top:10px;
-      }
+      .dish-top h3::after{width:42px;margin-top:10px}
 
-      .tasting-wrap{
-        margin-top:24px;
-      }
-
-      .tasting-trigger{
-        width:100%;
-        justify-content:center;
-      }
-
-      .tasting-modal{
-        padding:12px;
-      }
-
-      .tasting-box{
-        border-radius:22px;
-        max-height:88vh;
-      }
-
-      .tasting-content{
-        padding:20px 18px 18px;
-      }
-
-      .tasting-head h3{
-        font-size:30px;
-      }
-
-      .tasting-card{
-        padding:18px;
-        border-radius:20px;
-      }
+      .tasting-wrap{margin-top:24px}
+      .tasting-trigger{width:100%;justify-content:center}
+      .tasting-modal{padding:12px}
+      .tasting-box{border-radius:22px;max-height:88vh}
+      .tasting-content{padding:20px 18px 18px}
+      .tasting-head h3{font-size:30px}
+      .tasting-card{padding:18px;border-radius:20px}
 
       .tasting-card-head{
         flex-direction:column;
@@ -1099,23 +1183,16 @@
         gap:8px;
       }
 
-      .tasting-card-head h4{
-        font-size:28px;
-      }
-
-      .tasting-price{
-        font-size:25px;
-      }
-
-      .tasting-for{
-        text-align:left;
-      }
+      .tasting-card-head h4{font-size:28px}
+      .tasting-price{font-size:25px}
+      .tasting-for{text-align:left}
 
       .grid-2{grid-template-columns:1fr}
       .modal{padding:12px}
       .modal-box{padding:20px;border-radius:22px;max-height:88vh}
       .modal-box h3{font-size:28px}
       .footer-brand{font-size:24px}
+
       .mobile-bookbar{
         display:flex;
         position:fixed;
@@ -1131,9 +1208,22 @@
         border:1px solid rgba(255,255,255,.08);
         box-shadow:0 18px 36px rgba(0,0,0,.34);
       }
-      .mobile-bookbar .cta,.mobile-bookbar .btn-secondary{min-height:50px;border-radius:16px;padding:12px 14px;font-size:15px}
+
+      .mobile-bookbar .cta,
+      .mobile-bookbar .btn-secondary{
+        min-height:50px;
+        border-radius:16px;
+        padding:12px 14px;
+        font-size:15px;
+      }
+
       .mobile-bookbar .cta{flex:1}
-      .mobile-bookbar .btn-secondary{width:auto;min-width:62px}
+
+      .mobile-bookbar .btn-secondary{
+        width:auto;
+        min-width:62px;
+      }
+
       body.modal-open .mobile-bookbar{display:none!important}
     }
   </style>
@@ -1141,11 +1231,9 @@
 <body>
   <div class="topbar">
     <div class="container nav">
-      <a href="#top" class="brand" aria-label="Beef Grill Experience">
-        <div class="brand-mark">BG</div>
-        <div class="brand-text">
-          <strong>Beef Grill Experience</strong>
-          <span data-i18n data-it="Steakhouse • Chiavari" data-en="Steakhouse • Chiavari">Steakhouse • Chiavari</span>
+      <a href="#top" class="brand brand-only" aria-label="Beef Grill Experience">
+        <div class="brand-mark">
+          <img src="IMG_0274.JPG" alt="Logo Beef Grill Experience">
         </div>
       </a>
 
@@ -1185,7 +1273,9 @@
         <div class="eyebrow" data-i18n data-it="★ 4,5 su 5 • 182 recensioni • Fronte porto di Chiavari" data-en="★ 4.5 out of 5 • 182 reviews • Chiavari Marina front">
           ★ 4,5 su 5 • 182 recensioni • Fronte porto di Chiavari
         </div>
+
         <h1 data-i18n data-it="LA VERA ESPERIENZA" data-en="THE REAL EXPERIENCE">LA VERA ESPERIENZA</h1>
+
         <p data-i18n data-it="Beef Grill Experience è il ristorante per chi ama la brace, i tagli selezionati e i sapori intensi. Tartare, costine, tagliata, carne argentina, wagyu alla fiamma e grigliate pensate per chi cerca qualità vera." data-en="Beef Grill Experience is the restaurant for those who love fire-grilled meats, selected cuts and bold flavors. Tartare, ribs, sliced steak, Argentinian beef, flame-seared wagyu and grill selections designed for those seeking true quality.">
           Beef Grill Experience è il ristorante per chi ama la brace, i tagli selezionati e i sapori intensi.
           Tartare, costine, tagliata, carne argentina, wagyu alla fiamma e grigliate pensate per chi cerca qualità vera.
@@ -1207,10 +1297,12 @@
             <strong data-i18n data-it="Tris di Tartare" data-en="Tartare Trio">Tris di Tartare</strong>
             <span data-i18n data-it="Uno dei piatti più richiesti per iniziare la serata con eleganza e carattere." data-en="One of the most requested dishes to start the evening with elegance and character.">Uno dei piatti più richiesti per iniziare la serata con eleganza e carattere.</span>
           </div>
+
           <div class="stat">
             <strong data-i18n data-it="Costine & Tagliata" data-en="Ribs & Sliced Steak">Costine & Tagliata</strong>
             <span data-i18n data-it="Cotture precise, carne succosa e una proposta pensata per veri amanti della griglia." data-en="Precise cooking, juicy meat and a selection designed for true grill lovers.">Cotture precise, carne succosa e una proposta pensata per veri amanti della griglia.</span>
           </div>
+
           <div class="stat">
             <strong data-i18n data-it="Wagyu alla Fiamma" data-en="Flame Wagyu">Wagyu alla Fiamma</strong>
             <span data-i18n data-it="La firma scenografica del locale: gusto, materia prima e impatto al tavolo." data-en="The venue’s signature showpiece: flavor, premium ingredients and dramatic table presentation.">La firma scenografica del locale: gusto, materia prima e impatto al tavolo.</span>
@@ -1245,6 +1337,7 @@
             </span>
             <span class="btn-label" data-i18n data-it="Prenota ora" data-en="Book now">Prenota ora</span>
           </button>
+
           <div class="hint" data-i18n data-it="Dopo il click si aprirà direttamente la chat WhatsApp del titolare." data-en="After clicking, the owner's WhatsApp chat will open directly.">Dopo il click si aprirà direttamente la chat WhatsApp del titolare.</div>
         </form>
       </aside>
@@ -1265,6 +1358,7 @@
         <p data-i18n data-it="Situato nell'esclusiva cornice del Porto Turistico Marina Chiavari, offriamo una selezione rigorosa dei migliori tagli di carne, frollati alla perfezione e cotti lentamente sulla nostra griglia artigianale per esaltarne ogni sfumatura di sapore." data-en="Set in the exclusive setting of Marina Chiavari, we offer a carefully selected range of premium cuts, perfectly aged and slowly cooked on our handcrafted grill to enhance every nuance of flavor.">
           Situato nell'esclusiva cornice del Porto Turistico Marina Chiavari, offriamo una selezione rigorosa dei migliori tagli di carne, frollati alla perfezione e cotti lentamente sulla nostra griglia artigianale per esaltarne ogni sfumatura di sapore.
         </p>
+
         <p data-i18n data-it="Un viaggio culinario indimenticabile, accompagnato da una cantina di vini pregiati." data-en="An unforgettable culinary journey, accompanied by a cellar of fine wines.">
           Un viaggio culinario indimenticabile, accompagnato da una cantina di vini pregiati.
         </p>
@@ -1274,6 +1368,7 @@
             <strong>182</strong>
             <span data-i18n data-it="Recensioni con media molto alta e commenti positivi su carne e servizio." data-en="Reviews with a very high average and positive comments on meat quality and service.">Recensioni con media molto alta e commenti positivi su carne e servizio.</span>
           </div>
+
           <div class="stat" style="background:rgba(255,255,255,.04)">
             <strong data-i18n data-it="Porto di Chiavari" data-en="Chiavari Marina">Porto di Chiavari</strong>
             <span data-i18n data-it="Posizione percepita come scenografica e ideale per una cena di atmosfera." data-en="A location perceived as scenic and ideal for an atmospheric dinner.">Posizione percepita come scenografica e ideale per una cena di atmosfera.</span>
@@ -1359,10 +1454,12 @@
           <h3 data-i18n data-it="Grigliata di Carne" data-en="Mixed Grilled Meat">Grigliata di Carne</h3>
           <p data-i18n data-it="Ideale per tavoli conviviali e per raccontare abbondanza, brace e varietà in una sola immagine." data-en="Ideal for convivial tables and for conveying abundance, grilling and variety in a single image.">Ideale per tavoli conviviali e per raccontare abbondanza, brace e varietà in una sola immagine.</p>
         </article>
+
         <article class="popular-item panel">
           <h3 data-i18n data-it="Crostino con Salsiccia Argentina" data-en="Toast with Argentinian Sausage">Crostino con Salsiccia Argentina</h3>
           <p data-i18n data-it="Un antipasto distintivo che rafforza il legame con i sapori sudamericani già presenti nella proposta del locale." data-en="A distinctive starter that reinforces the connection with South American flavors already present in the venue’s offer.">Un antipasto distintivo che rafforza il legame con i sapori sudamericani già presenti nella proposta del locale.</p>
         </article>
+
         <article class="popular-item panel">
           <h3 data-i18n data-it="Dolci della Casa" data-en="Homemade Desserts">Dolci della Casa</h3>
           <p data-i18n data-it="Da usare come chiusura elegante del percorso e per aumentare la percezione di esperienza completa." data-en="To be used as an elegant ending to the journey and to enhance the perception of a complete experience.">Da usare come chiusura elegante del percorso e per aumentare la percezione di esperienza completa.</p>
@@ -1481,6 +1578,7 @@
             <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
           </svg>
         </a>
+
         <a class="social-link" href="https://www.facebook.com/BeefGrillExperience/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H16.8V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V11H8v3h2.7v8h2.8z"/>
@@ -1707,6 +1805,7 @@
       applySelectOptions(lang);
 
       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+
       if(clickedBtn){
         clickedBtn.classList.add('active');
       } else {
