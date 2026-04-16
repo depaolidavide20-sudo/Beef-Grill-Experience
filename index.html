@@ -289,23 +289,32 @@
     }
 
     .hero{
-  min-height:100vh;
-  display:flex;
-  align-items:flex-start;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(141,31,20,.20), transparent 26%),
-    linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.56)),
-    url('IMG_0255.JPG') center center / cover no-repeat;
-}
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(141,31,20,.18), transparent 26%),
+        linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.48)),
+        url('IMG_0255.JPG') center 38% / cover no-repeat;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.24) 0%,rgba(0,0,0,.08) 34%,rgba(0,0,0,.26) 100%);
+      pointer-events:none;
+    }
 
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.28) 40%,rgba(0,0,0,.72) 100%);
+        linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.18) 42%,rgba(0,0,0,.66) 100%);
       pointer-events:none;
     }
 
@@ -314,14 +323,15 @@
       z-index:1;
       min-height:calc(100vh - var(--header-h));
       display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:30px;
+      grid-template-columns:minmax(0,1.12fr) minmax(320px,.78fr);
+      gap:26px;
       align-items:end;
       padding:112px 0 74px;
     }
 
     .hero-copy{
       position:relative;
+      padding-right:10px;
     }
 
     .eyebrow{
@@ -331,7 +341,7 @@
       padding:9px 15px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.16);
-      background:rgba(14,11,9,.42);
+      background:rgba(14,11,9,.36);
       color:#f7e7d3;
       font-size:13px;
       margin-bottom:18px;
@@ -343,7 +353,7 @@
       font-size:clamp(58px,7vw,104px);
       max-width:830px;
       margin-bottom:16px;
-      text-shadow:0 8px 28px rgba(0,0,0,.34);
+      text-shadow:0 8px 28px rgba(0,0,0,.30);
     }
 
     .hero-copy p{
@@ -352,7 +362,7 @@
       font-size:20px;
       line-height:1.72;
       color:#f3e8dd;
-      text-shadow:0 4px 16px rgba(0,0,0,.34);
+      text-shadow:0 4px 16px rgba(0,0,0,.28);
     }
 
     .hero-actions{
@@ -405,8 +415,8 @@
       position:relative;
       padding:20px 18px 18px;
       border-radius:22px;
-      background:rgba(17,13,11,.48);
-      border:1px solid rgba(255,255,255,.11);
+      background:rgba(17,13,11,.42);
+      border:1px solid rgba(255,255,255,.10);
       backdrop-filter:blur(10px);
       box-shadow:var(--shadow-md);
       overflow:hidden;
@@ -437,15 +447,17 @@
     .booking-card{
       position:relative;
       background:
-        linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015)),
-        rgba(16,13,11,.80);
-      border:1px solid rgba(255,255,255,.12);
+        linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02)),
+        rgba(16,13,11,.56);
+      border:1px solid rgba(255,255,255,.16);
       border-radius:32px;
-      padding:30px;
-      backdrop-filter:blur(14px);
+      padding:28px;
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
       box-shadow:var(--shadow-xl);
       margin-left:auto;
-      max-width:510px;
+      max-width:430px;
+      width:100%;
       overflow:hidden;
     }
 
@@ -459,26 +471,38 @@
       pointer-events:none;
     }
 
+    .booking-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));
+      pointer-events:none;
+    }
+
     .booking-card h3{
-      font-size:36px;
+      font-size:34px;
       margin-bottom:10px;
+      position:relative;
+      z-index:1;
     }
 
     .booking-card p{
       margin:0 0 18px;
-      color:var(--muted);
+      color:#decbb8;
       line-height:1.74;
+      position:relative;
+      z-index:1;
     }
 
-    .form{display:grid;gap:12px}
+    .form{display:grid;gap:12px;position:relative;z-index:1}
     .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 
     input,textarea,select{
       width:100%;
       min-width:0;
       border-radius:17px;
-      border:1px solid rgba(255,255,255,.11);
-      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
       color:#fff;
       padding:15px 16px;
       outline:none;
@@ -489,7 +513,7 @@
 
     input:focus,textarea:focus,select:focus{
       border-color:rgba(241,194,122,.45);
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.09);
     }
 
     input::placeholder,textarea::placeholder{
@@ -1197,7 +1221,7 @@
 
       .booking-card{
         margin-left:0;
-        max-width:none;
+        max-width:520px;
       }
 
       .menu-grid{
@@ -1325,9 +1349,20 @@
         border-radius:18px;
         padding:4px;
       }
+
       .hero{
         min-height:auto;
-        background-position:center center;
+        background-position:center 32%;
+      }
+
+      .hero::before{
+        background:
+          linear-gradient(90deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.04) 50%,rgba(0,0,0,.18) 100%);
+      }
+
+      .hero::after{
+        background:
+          linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.14) 46%,rgba(0,0,0,.48) 100%);
       }
 
       .hero-grid{
@@ -1348,8 +1383,10 @@
         padding:18px 18px 16px;
         border-radius:24px;
         background:
-          linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.34) 44%,rgba(0,0,0,.78) 100%);
-        border:1px solid rgba(255,255,255,.07);
+          linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.16) 40%,rgba(0,0,0,.42) 100%);
+        border:1px solid rgba(255,255,255,.08);
+        backdrop-filter:blur(6px);
+        -webkit-backdrop-filter:blur(6px);
         box-shadow:var(--shadow-lg);
       }
 
@@ -1360,6 +1397,7 @@
         line-height:1.3;
         padding:7px 10px;
         margin-bottom:12px;
+        background:rgba(14,11,9,.28);
       }
 
       h1{
@@ -1387,7 +1425,6 @@
       .booking-card{
         display:none;
       }
-
       .section-title{
         margin-bottom:18px;
       }
@@ -1766,6 +1803,7 @@
     <a href="#recensioni" onclick="closeMobileMenu()" data-i18n data-it="Recensioni" data-en="Reviews">Recensioni</a>
     <a href="#contatti" onclick="closeMobileMenu()" data-i18n data-it="Contatti" data-en="Contacts">Contatti</a>
   </div>
+
   <section class="hero" id="top">
     <div class="container hero-grid">
       <div class="hero-copy">
@@ -1778,7 +1816,6 @@
         <p data-i18n data-it="Beef Grill Experience è il ristorante per chi ama la brace, i tagli selezionati e i sapori intensi. Tartare, costine, tagliata, carne argentina, wagyu alla fiamma e grigliate pensate per chi cerca qualità vera." data-en="Beef Grill Experience is the restaurant for those who love fire-grilled meats, selected cuts and bold flavors. Tartare, ribs, sliced steak, Argentinian beef, flame-seared wagyu and grill selections designed for those seeking true quality.">
           Beef Grill Experience è il ristorante per chi ama la brace, i tagli selezionati e i sapori intensi. Tartare, costine, tagliata, carne argentina, wagyu alla fiamma e grigliate pensate per chi cerca qualità vera.
         </p>
-
         <div class="hero-actions desktop-only">
           <button class="cta whatsapp-btn" type="button" onclick="openModal()">
             <span class="whatsapp-badge" aria-hidden="true">
