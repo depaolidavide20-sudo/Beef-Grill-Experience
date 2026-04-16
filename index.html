@@ -384,23 +384,29 @@
       box-shadow:var(--shadow);
     }
 
-    .story-copy{padding:36px}
+    .story-copy{
+      padding:36px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .story-copy .section-title{
+      margin:0 auto 24px;
+    }
 
     .story-copy p{
       margin:0;
       color:var(--muted);
       line-height:1.86;
       font-size:17px;
+      max-width:760px;
+      margin-left:auto;
+      margin-right:auto;
     }
 
     .story-copy p + p{margin-top:16px}
-
-    .story-stats{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:14px;
-      margin-top:26px;
-    }
 
     .story-visual{
       min-height:570px;
@@ -553,6 +559,7 @@
     .tags{
       display:none;
     }
+
     .tasting-wrap{
       margin-top:30px;
       display:flex;
@@ -762,17 +769,6 @@
       left:0;
       color:var(--gold-2);
     }
-
-    .popular-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
-    }
-
-    .popular-item{padding:24px}
-    .popular-item h3{font-size:30px;margin-bottom:10px}
-    .popular-item p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
-
     .reviews-grid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -780,9 +776,23 @@
       margin-bottom:24px;
     }
 
-    .review{padding:26px;position:relative}
-    .review .stars{color:var(--gold-2);letter-spacing:2px;margin-bottom:16px}
-    .review p{margin:0 0 18px;color:#f8efe5;line-height:1.8}
+    .review{
+      padding:26px;
+      position:relative;
+    }
+
+    .review .stars{
+      color:var(--gold-2);
+      letter-spacing:2px;
+      margin-bottom:16px;
+    }
+
+    .review p{
+      margin:0 0 18px;
+      color:#f8efe5;
+      line-height:1.8;
+    }
+
     .review strong{display:block;font-size:15px}
     .review span{color:var(--muted);font-size:14px}
 
@@ -790,12 +800,23 @@
       position:absolute;
       top:16px;
       right:16px;
-      color:var(--gold-2);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#f5efe8;
       font-size:13px;
-      padding:7px 10px;
+      font-weight:700;
+      padding:7px 12px;
       border-radius:999px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.09);
+    }
+
+    .google-logo{
+      width:18px;
+      height:18px;
+      display:block;
+      flex-shrink:0;
     }
 
     .review-actions{
@@ -814,13 +835,6 @@
       width:18px;
       height:18px;
       display:block;
-    }
-
-    .score-line{
-      text-align:center;
-      margin-top:22px;
-      color:var(--gold-2);
-      font-size:18px;
     }
 
     .contact-grid{
@@ -1023,7 +1037,7 @@
     @media (max-width:980px){
       .hero-grid,.story,.contact-grid{grid-template-columns:1fr}
       .booking-card{margin-left:0;max-width:none}
-      .reviews-grid,.popular-grid{grid-template-columns:1fr}
+      .reviews-grid{grid-template-columns:1fr}
       .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .stats{grid-template-columns:1fr}
     }
@@ -1120,6 +1134,7 @@
         padding:14px 18px;
         font-size:15px;
       }
+
       .booking-card{display:none}
       .section{padding:40px 0}
       .section-title{margin-bottom:16px}
@@ -1132,7 +1147,6 @@
 
       .section-title p,
       .story-copy p,
-      .popular-item p,
       .review p,
       .contact-item p{
         font-size:14px!important;
@@ -1141,7 +1155,6 @@
 
       .story-copy,
       .contact-card,
-      .popular-item,
       .review,
       .dish-overlay{
         padding:18px;
@@ -1362,18 +1375,6 @@
         <p data-i18n data-it="Un viaggio culinario indimenticabile, accompagnato da una cantina di vini pregiati." data-en="An unforgettable culinary journey, accompanied by a cellar of fine wines.">
           Un viaggio culinario indimenticabile, accompagnato da una cantina di vini pregiati.
         </p>
-
-        <div class="story-stats">
-          <div class="stat" style="background:rgba(255,255,255,.04)">
-            <strong>182</strong>
-            <span data-i18n data-it="Recensioni con media molto alta e commenti positivi su carne e servizio." data-en="Reviews with a very high average and positive comments on meat quality and service.">Recensioni con media molto alta e commenti positivi su carne e servizio.</span>
-          </div>
-
-          <div class="stat" style="background:rgba(255,255,255,.04)">
-            <strong data-i18n data-it="Porto di Chiavari" data-en="Chiavari Marina">Porto di Chiavari</strong>
-            <span data-i18n data-it="Posizione percepita come scenografica e ideale per una cena di atmosfera." data-en="A location perceived as scenic and ideal for an atmospheric dinner.">Posizione percepita come scenografica e ideale per una cena di atmosfera.</span>
-          </div>
-        </div>
       </div>
 
       <div class="story-visual">
@@ -1440,34 +1441,6 @@
       </div>
     </div>
   </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-title">
-        <span class="kicker" data-i18n data-it="Altri spunti menu" data-en="More menu ideas">Altri spunti menu</span>
-        <h2 data-i18n data-it="Altri piatti da mettere in evidenza." data-en="More dishes to highlight.">Altri piatti da mettere in evidenza.</h2>
-        <p data-i18n data-it="Questi elementi possono diventare card aggiuntive, highlight nel menu o contenuti per i social collegati al sito." data-en="These elements can become additional cards, menu highlights or content for social channels connected to the website.">Questi elementi possono diventare card aggiuntive, highlight nel menu o contenuti per i social collegati al sito.</p>
-      </div>
-
-      <div class="popular-grid">
-        <article class="popular-item panel">
-          <h3 data-i18n data-it="Grigliata di Carne" data-en="Mixed Grilled Meat">Grigliata di Carne</h3>
-          <p data-i18n data-it="Ideale per tavoli conviviali e per raccontare abbondanza, brace e varietà in una sola immagine." data-en="Ideal for convivial tables and for conveying abundance, grilling and variety in a single image.">Ideale per tavoli conviviali e per raccontare abbondanza, brace e varietà in una sola immagine.</p>
-        </article>
-
-        <article class="popular-item panel">
-          <h3 data-i18n data-it="Crostino con Salsiccia Argentina" data-en="Toast with Argentinian Sausage">Crostino con Salsiccia Argentina</h3>
-          <p data-i18n data-it="Un antipasto distintivo che rafforza il legame con i sapori sudamericani già presenti nella proposta del locale." data-en="A distinctive starter that reinforces the connection with South American flavors already present in the venue’s offer.">Un antipasto distintivo che rafforza il legame con i sapori sudamericani già presenti nella proposta del locale.</p>
-        </article>
-
-        <article class="popular-item panel">
-          <h3 data-i18n data-it="Dolci della Casa" data-en="Homemade Desserts">Dolci della Casa</h3>
-          <p data-i18n data-it="Da usare come chiusura elegante del percorso e per aumentare la percezione di esperienza completa." data-en="To be used as an elegant ending to the journey and to enhance the perception of a complete experience.">Da usare come chiusura elegante del percorso e per aumentare la percezione di esperienza completa.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="recensioni">
     <div class="container">
       <div class="section-title" style="margin-bottom:18px;">
@@ -1477,7 +1450,15 @@
 
       <div class="reviews-grid">
         <article class="review panel">
-          <div class="review-badge">Google</div>
+          <div class="review-badge">
+            <svg class="google-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.2.8 3.9 1.5l2.7-2.6C17 3.4 14.8 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12S6.8 21.5 12 21.5c6.9 0 9.2-4.8 9.2-7.3 0-.5-.1-.9-.1-1.3H12z"/>
+              <path fill="#4285F4" d="M21.1 12.9c.1-.4.1-.8.1-1.3s0-.9-.1-1.3H12v2.6h5.5c-.2 1.3-1.5 3.9-5.5 3.9v3.8c5.3 0 9.2-3.5 9.2-8.7z"/>
+              <path fill="#FBBC05" d="M5.3 14.3c-.2-.7-.3-1.4-.3-2.3s.1-1.6.3-2.3V5.9H2.3C1.6 7.2 1.2 8.6 1.2 12s.4 4.8 1.1 6.1l3-3.8z"/>
+              <path fill="#34A853" d="M12 21.5c2.8 0 5.1-.9 6.8-2.4l-3.2-2.6c-.9.6-2.1 1.1-3.6 1.1-3.9 0-5.2-2.6-5.5-3.9l-3 2.3c1.7 3.3 5 5.5 8.5 5.5z"/>
+            </svg>
+            Google
+          </div>
           <div class="stars">★★★★★</div>
           <p data-i18n data-it="“Qualità della carne molto elevata ed una cottura perfetta!!!”" data-en="“Very high meat quality and perfect cooking!!!”">“Qualità della carne molto elevata ed una cottura perfetta!!!”</p>
           <strong data-i18n data-it="Cliente" data-en="Customer">Cliente</strong>
@@ -1485,7 +1466,15 @@
         </article>
 
         <article class="review panel">
-          <div class="review-badge">Google</div>
+          <div class="review-badge">
+            <svg class="google-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.2.8 3.9 1.5l2.7-2.6C17 3.4 14.8 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12S6.8 21.5 12 21.5c6.9 0 9.2-4.8 9.2-7.3 0-.5-.1-.9-.1-1.3H12z"/>
+              <path fill="#4285F4" d="M21.1 12.9c.1-.4.1-.8.1-1.3s0-.9-.1-1.3H12v2.6h5.5c-.2 1.3-1.5 3.9-5.5 3.9v3.8c5.3 0 9.2-3.5 9.2-8.7z"/>
+              <path fill="#FBBC05" d="M5.3 14.3c-.2-.7-.3-1.4-.3-2.3s.1-1.6.3-2.3V5.9H2.3C1.6 7.2 1.2 8.6 1.2 12s.4 4.8 1.1 6.1l3-3.8z"/>
+              <path fill="#34A853" d="M12 21.5c2.8 0 5.1-.9 6.8-2.4l-3.2-2.6c-.9.6-2.1 1.1-3.6 1.1-3.9 0-5.2-2.6-5.5-3.9l-3 2.3c1.7 3.3 5 5.5 8.5 5.5z"/>
+            </svg>
+            Google
+          </div>
           <div class="stars">★★★★★</div>
           <p data-i18n data-it="“Un ristorante di carne spettacolare, i proprietari molto gentili simpatici.”" data-en="“A spectacular steakhouse, with very kind and friendly owners.”">“Un ristorante di carne spettacolare, i proprietari molto gentili simpatici.”</p>
           <strong data-i18n data-it="Cliente" data-en="Customer">Cliente</strong>
@@ -1493,7 +1482,15 @@
         </article>
 
         <article class="review panel">
-          <div class="review-badge">Google</div>
+          <div class="review-badge">
+            <svg class="google-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.2.8 3.9 1.5l2.7-2.6C17 3.4 14.8 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12S6.8 21.5 12 21.5c6.9 0 9.2-4.8 9.2-7.3 0-.5-.1-.9-.1-1.3H12z"/>
+              <path fill="#4285F4" d="M21.1 12.9c.1-.4.1-.8.1-1.3s0-.9-.1-1.3H12v2.6h5.5c-.2 1.3-1.5 3.9-5.5 3.9v3.8c5.3 0 9.2-3.5 9.2-8.7z"/>
+              <path fill="#FBBC05" d="M5.3 14.3c-.2-.7-.3-1.4-.3-2.3s.1-1.6.3-2.3V5.9H2.3C1.6 7.2 1.2 8.6 1.2 12s.4 4.8 1.1 6.1l3-3.8z"/>
+              <path fill="#34A853" d="M12 21.5c2.8 0 5.1-.9 6.8-2.4l-3.2-2.6c-.9.6-2.1 1.1-3.6 1.1-3.9 0-5.2-2.6-5.5-3.9l-3 2.3c1.7 3.3 5 5.5 8.5 5.5z"/>
+            </svg>
+            Google
+          </div>
           <div class="stars">★★★★★</div>
           <p data-i18n data-it="“Bel locale sul porto di Chiavari, qualità della carne davvero ottima, le costine si scioglievano in bocca.”" data-en="“Beautiful venue on Chiavari marina, truly excellent meat quality, and the ribs melted in your mouth.”">“Bel locale sul porto di Chiavari, qualità della carne davvero ottima, le costine si scioglievano in bocca.”</p>
           <strong data-i18n data-it="Cliente" data-en="Customer">Cliente</strong>
@@ -1503,14 +1500,15 @@
 
       <div class="review-actions">
         <a class="review-cta" href="https://www.google.com/search?q=Beef+Grill+Experience+Chiavari+recensioni" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2l2.9 6.1 6.7.8-4.9 4.6 1.3 6.5L12 16.8 6 20l1.3-6.5L2.4 8.9l6.7-.8L12 2z"/>
+          <svg class="google-logo" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.2.8 3.9 1.5l2.7-2.6C17 3.4 14.8 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12S6.8 21.5 12 21.5c6.9 0 9.2-4.8 9.2-7.3 0-.5-.1-.9-.1-1.3H12z"/>
+            <path fill="#4285F4" d="M21.1 12.9c.1-.4.1-.8.1-1.3s0-.9-.1-1.3H12v2.6h5.5c-.2 1.3-1.5 3.9-5.5 3.9v3.8c5.3 0 9.2-3.5 9.2-8.7z"/>
+            <path fill="#FBBC05" d="M5.3 14.3c-.2-.7-.3-1.4-.3-2.3s.1-1.6.3-2.3V5.9H2.3C1.6 7.2 1.2 8.6 1.2 12s.4 4.8 1.1 6.1l3-3.8z"/>
+            <path fill="#34A853" d="M12 21.5c2.8 0 5.1-.9 6.8-2.4l-3.2-2.6c-.9.6-2.1 1.1-3.6 1.1-3.9 0-5.2-2.6-5.5-3.9l-3 2.3c1.7 3.3 5 5.5 8.5 5.5z"/>
           </svg>
           <span data-i18n data-it="Lascia una recensione" data-en="Leave a review">Lascia una recensione</span>
         </a>
       </div>
-
-      <div class="score-line" data-i18n data-it="★ 4,5 su Google • 182 recensioni" data-en="★ 4.5 on Google • 182 reviews">★ 4,5 su Google • 182 recensioni</div>
     </div>
   </section>
 
@@ -1519,8 +1517,7 @@
       <div class="contact-card panel">
         <div class="section-title" style="margin-bottom:0;">
           <span class="kicker" data-i18n data-it="Contatti" data-en="Contacts">Contatti</span>
-          <h2 data-i18n data-it="Porta la tua fame nel posto giusto." data-en="Bring your appetite to the right place.">Porta la tua fame nel posto giusto.</h2>
-          <p data-i18n data-it="Tutti i riferimenti del locale, in un'unica sezione essenziale e raffinata." data-en="All the venue’s details, gathered in one refined and essential section.">Tutti i riferimenti del locale, in un'unica sezione essenziale e raffinata.</p>
+          <h2 data-i18n data-it="Vieni a trovarci" data-en="Come visit us">Vieni a trovarci</h2>
         </div>
 
         <div class="contact-list">
@@ -1556,7 +1553,14 @@
         </div>
 
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <button class="cta" onclick="openModal()" data-i18n data-it="Prenota via WhatsApp" data-en="Book via WhatsApp">Prenota via WhatsApp</button>
+          <button class="cta whatsapp-btn" onclick="openModal()">
+            <span class="whatsapp-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="whatsapp-icon">
+                <path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 1.87.57 3.61 1.56 5.08L2 22l5.66-1.48A10.3 10.3 0 0 0 12 21c5.52 0 10-4.26 10-9.5S17.52 2 12 2zm0 17.5c-1.6 0-3.14-.42-4.47-1.2l-.32-.19-3.36.88.9-3.26-.21-.33A7.8 7.8 0 0 1 4 11.5C4 7.36 7.58 4 12 4s8 3.36 8 7.5-3.58 7.5-8 7.5zm4.2-5.3c-.23-.11-1.36-.67-1.57-.75-.21-.08-.36-.11-.52.11-.15.22-.6.75-.73.9-.13.15-.26.17-.49.06-.23-.11-.97-.36-1.84-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.22-.01-.34.1-.45.1-.1.23-.26.34-.39.11-.13.15-.22.23-.36.08-.14.04-.27-.02-.38-.06-.11-.52-1.25-.71-1.71-.19-.46-.38-.4-.52-.41h-.45c-.15 0-.38.05-.58.27-.2.22-.76.74-.76 1.8 0 1.06.78 2.09.89 2.23.11.14 1.54 2.35 3.73 3.29.52.22.92.35 1.23.45.52.17.99.15 1.36.09.42-.06 1.36-.55 1.55-1.08.19-.53.19-.99.13-1.08-.05-.09-.2-.15-.43-.26z"/>
+              </svg>
+            </span>
+            <span class="btn-label" data-i18n data-it="Prenota via WhatsApp" data-en="Book via WhatsApp">Prenota via WhatsApp</span>
+          </button>
           <a class="btn-secondary" href="tel:+3901851771977" data-i18n data-it="Chiama ora" data-en="Call now">Chiama ora</a>
         </div>
       </div>
@@ -1573,13 +1577,13 @@
       <div class="footer-sub" data-i18n data-it="Steakhouse • Chiavari • Marina" data-en="Steakhouse • Chiavari • Marina">Steakhouse • Chiavari • Marina</div>
 
       <div class="footer-socials">
-        <a class="social-link" href="https://www.instagram.com/beef_grill_experience/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <a class="social-link" href="https://www.instagram.com/beef_grill_experience?igsh=OTB6N2ptdmh6NTh4" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
           </svg>
         </a>
 
-        <a class="social-link" href="https://www.facebook.com/BeefGrillExperience/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <a class="social-link" href="https://www.facebook.com/BeefGrillExperience?mibextid=wwXIfr&rdid=6UWIsvRKRVJKCrJ2&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EQjUYMSv1%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H16.8V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V11H8v3h2.7v8h2.8z"/>
           </svg>
@@ -1633,7 +1637,6 @@
       </form>
     </div>
   </div>
-
   <div class="tasting-modal" id="tastingModal">
     <div class="tasting-box">
       <button class="tasting-close" type="button" onclick="closeTastingModal()">×</button>
