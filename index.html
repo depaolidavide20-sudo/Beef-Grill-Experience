@@ -162,23 +162,49 @@
     }
 
     .brand-mark{
-      width:174px;
-      height:92px;
-      border-radius:22px;
-      background:rgba(8,7,6,.74);
-      border:1px solid rgba(215,163,93,.22);
-      box-shadow:0 14px 34px rgba(0,0,0,.28);
-      overflow:hidden;
-      padding:4px;
+      width:210px;
+      height:64px;
+      border-radius:18px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012)),
+        rgba(4,4,4,.88);
+      border:1px solid rgba(215,163,93,.34);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 16px 34px rgba(0,0,0,.30);
+      padding:9px 18px 8px;
       flex-shrink:0;
-      backdrop-filter:blur(12px);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
     }
 
-    .brand-mark img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
+    .brand-title{
       display:block;
+      font-family:"Cormorant Garamond",serif;
+      font-size:30px;
+      font-weight:700;
+      line-height:.86;
+      color:#fff;
+      text-shadow:0 6px 20px rgba(0,0,0,.45);
+    }
+
+    .brand-rule{
+      width:72px;
+      height:1px;
+      margin:5px 0 4px;
+      background:linear-gradient(90deg,transparent,rgba(241,194,122,.86),transparent);
+    }
+
+    .brand-subtitle{
+      width:100%;
+      display:block;
+      color:#f2e8db;
+      font-size:10px;
+      font-weight:700;
+      line-height:1;
+      text-align:center;
     }
 
     .nav-links{
@@ -302,6 +328,11 @@
         url('hero-cover-desktop.png') center 24% / cover no-repeat;
     }
 
+    .hero-mobile-carousel,
+    .hero-mobile-controls{
+      display:none;
+    }
+
     .hero::before{
       content:"";
       position:absolute;
@@ -323,10 +354,10 @@
 
     .hero-grid{
       position:relative;
-      z-index:1;
+      z-index:2;
       min-height:calc(100vh - var(--header-h));
       display:grid;
-      grid-template-columns:minmax(0,1.16fr) minmax(320px,.72fr);
+      grid-template-columns:minmax(0,780px);
       gap:24px;
       align-items:end;
       padding:86px 0 100px;
@@ -356,17 +387,17 @@
     }
 
     h1{
-      font-size:clamp(58px,7vw,104px);
-      max-width:830px;
+      font-size:clamp(50px,6vw,88px);
+      max-width:760px;
       margin-bottom:16px;
       text-shadow:0 10px 34px rgba(0,0,0,.34);
     }
 
     .hero-copy p{
-      max-width:700px;
+      max-width:640px;
       margin:0 0 26px;
-      font-size:20px;
-      line-height:1.72;
+      font-size:18px;
+      line-height:1.64;
       color:#f3e8dd;
       text-shadow:0 6px 20px rgba(0,0,0,.30);
     }
@@ -483,6 +514,7 @@
     }
 
     .booking-card{
+      display:none;
       position:relative;
       background:transparent;
       border:0;
@@ -1357,7 +1389,30 @@
       }
 
       .reviews-grid{
-        grid-template-columns:1fr;
+        display:flex;
+        grid-template-columns:none;
+        gap:12px;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        margin:0 -9px 18px;
+        padding:0 9px 14px;
+        scrollbar-width:none;
+      }
+
+      .reviews-grid::-webkit-scrollbar{
+        display:none;
+      }
+
+      .reviews-grid::after{
+        content:"";
+        flex:0 0 4px;
+      }
+
+      .reviews-grid .review{
+        flex:0 0 86%;
+        scroll-snap-align:center;
+        min-height:210px;
       }
 
       .stats{
@@ -1487,15 +1542,28 @@
       }
 
       .brand-mark{
-        width:116px;
-        height:54px;
+        width:154px;
+        height:52px;
         border-radius:14px;
-        padding:3px;
+        padding:7px 12px 6px;
         background:linear-gradient(180deg,rgba(12,10,8,.72),rgba(12,10,8,.52));
         border:1px solid rgba(215,163,93,.18);
         box-shadow:
           inset 0 1px 0 rgba(255,255,255,.04),
           0 10px 22px rgba(0,0,0,.16);
+      }
+
+      .brand-title{
+        font-size:23px;
+      }
+
+      .brand-rule{
+        width:56px;
+        margin:4px 0 3px;
+      }
+
+      .brand-subtitle{
+        font-size:8px;
       }
 
       .hero{
@@ -1504,7 +1572,76 @@
           radial-gradient(circle at 18% 10%, rgba(141,31,20,.10), transparent 26%),
           radial-gradient(circle at 78% 24%, rgba(215,163,93,.14), transparent 24%),
           linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.26)),
-          url('hero-cover-mobile.png') center 64% / cover no-repeat;
+          #070605;
+      }
+
+      .hero-mobile-carousel{
+        display:block;
+        position:absolute;
+        inset:0;
+        z-index:0;
+        overflow:hidden;
+        pointer-events:none;
+      }
+
+      .hero-mobile-slide{
+        position:absolute;
+        inset:0;
+        margin:0;
+        opacity:0;
+        transform:scale(1.04);
+        transition:opacity .45s ease, transform .9s ease;
+      }
+
+      .hero-mobile-slide.active{
+        opacity:1;
+        transform:scale(1);
+      }
+
+      .hero-mobile-slide img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+      }
+
+      .hero-mobile-controls{
+        display:block;
+        position:absolute;
+        inset:0;
+        z-index:3;
+        pointer-events:none;
+      }
+
+      .hero-mobile-arrow{
+        position:absolute;
+        top:50%;
+        width:42px;
+        height:42px;
+        border-radius:50%;
+        border:1px solid rgba(255,255,255,.18);
+        background:rgba(11,8,6,.58);
+        color:#fff;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        box-shadow:0 18px 34px rgba(0,0,0,.30);
+        backdrop-filter:blur(12px);
+        pointer-events:auto;
+        transform:translateY(-50%);
+      }
+
+      .hero-mobile-arrow.prev{
+        left:10px;
+      }
+
+      .hero-mobile-arrow.next{
+        right:10px;
+      }
+
+      .hero-mobile-arrow svg{
+        width:20px;
+        height:20px;
       }
 
       @supports (height:100dvh){
@@ -1978,7 +2115,9 @@
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Beef Grill Experience">
         <div class="brand-mark">
-          <img src="IMG_0274.JPG" alt="Logo Beef Grill Experience" />
+          <span class="brand-title">BEEF</span>
+          <span class="brand-rule"></span>
+          <span class="brand-subtitle">GRILL EXPERIENCE</span>
         </div>
       </a>
 
@@ -2020,6 +2159,31 @@
   </div>
 
   <section class="hero" id="top">
+    <div class="hero-mobile-carousel" data-hero-carousel aria-label="Galleria copertina">
+      <figure class="hero-mobile-slide active" data-hero-slide>
+        <img src="hero-cover-mobile.png" alt="" style="object-position:center 64%;" />
+      </figure>
+      <figure class="hero-mobile-slide" data-hero-slide aria-hidden="true">
+        <img src="dehor-esterno.png" alt="" style="object-position:center center;" />
+      </figure>
+      <figure class="hero-mobile-slide" data-hero-slide aria-hidden="true">
+        <img src="locale.webp" alt="" style="object-position:center center;" />
+      </figure>
+    </div>
+
+    <div class="hero-mobile-controls" aria-label="Controlli galleria copertina">
+      <button class="hero-mobile-arrow prev" type="button" onclick="changeHeroSlide(-1)" aria-label="Immagine precedente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="hero-mobile-arrow next" type="button" onclick="changeHeroSlide(1)" aria-label="Immagine successiva">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+
     <div class="container hero-grid">
       <div class="hero-copy">
         <div class="eyebrow" data-i18n data-it="★ 4,5 su 5 • 182 recensioni • Fronte porto di Chiavari" data-en="★ 4.5 out of 5 • 182 reviews • Chiavari Marina front">
@@ -2028,8 +2192,8 @@
 
         <h1 data-i18n data-it="LA VERA ESPERIENZA" data-en="THE REAL EXPERIENCE">LA VERA ESPERIENZA</h1>
 
-        <p data-i18n data-it="Beef Grill Experience è il ristorante per chi ama la brace, i tagli selezionati e i sapori intensi. Tartare, costine, tagliata, carne argentina, wagyu alla fiamma e grigliate pensate per chi cerca qualità vera." data-en="Beef Grill Experience is the restaurant for those who love fire-grilled meats, selected cuts and bold flavors. Tartare, ribs, sliced steak, Argentinian beef, flame-seared wagyu and grill selections designed for those seeking true quality.">
-          Beef Grill Experience è il ristorante per chi ama la brace, i tagli selezionati e i sapori intensi. Tartare, costine, tagliata, carne argentina, wagyu alla fiamma e grigliate pensate per chi cerca qualità vera.
+        <p data-i18n data-it="Brace, tagli selezionati e sapori intensi: tartare, costine, carne argentina e wagyu alla fiamma." data-en="Fire-grilled cuts and bold flavors: tartare, ribs, Argentinian beef and flame-seared wagyu.">
+          Brace, tagli selezionati e sapori intensi: tartare, costine, carne argentina e wagyu alla fiamma.
         </p>
 
         <div class="hero-actions desktop-only">
@@ -2647,6 +2811,42 @@
       document.getElementById('mobileMenuPanel').classList.remove('open');
     }
 
+    let heroSlideIndex = 0;
+
+    function updateHeroCarousel(){
+      const slides = Array.from(document.querySelectorAll('[data-hero-slide]'));
+      if(!slides.length) return;
+
+      heroSlideIndex = (heroSlideIndex + slides.length) % slides.length;
+
+      slides.forEach((slide, index) => {
+        const isActive = index === heroSlideIndex;
+        slide.classList.toggle('active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+    }
+
+    function changeHeroSlide(delta){
+      heroSlideIndex += delta;
+      updateHeroCarousel();
+    }
+
+    function initHeroCarouselSwipe(){
+      const carousel = document.querySelector('.hero');
+      if(!carousel) return;
+
+      let startX = 0;
+
+      carousel.addEventListener('touchstart', (event) => {
+        startX = event.changedTouches[0].clientX;
+      }, {passive:true});
+
+      carousel.addEventListener('touchend', (event) => {
+        const deltaX = event.changedTouches[0].clientX - startX;
+        if(Math.abs(deltaX) > 42) changeHeroSlide(deltaX > 0 ? -1 : 1);
+      }, {passive:true});
+    }
+
     let storySlideIndex = 0;
 
     function updateStoryCarousel(){
@@ -2704,6 +2904,8 @@
     });
 
     setLanguage('it');
+    updateHeroCarousel();
+    initHeroCarouselSwipe();
     updateStoryCarousel();
     initStoryCarouselSwipe();
   </script>
