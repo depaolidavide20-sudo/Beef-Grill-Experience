@@ -329,12 +329,13 @@
       grid-template-columns:minmax(0,1.16fr) minmax(320px,.72fr);
       gap:24px;
       align-items:end;
-      padding:112px 0 74px;
+      padding:86px 0 100px;
     }
 
     .hero-copy{
       position:relative;
       padding-right:10px;
+      transform:translateY(-58px);
     }
 
     .eyebrow{
@@ -375,6 +376,38 @@
       flex-wrap:wrap;
       gap:14px;
       margin-bottom:26px;
+    }
+
+    .hero-social{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:max-content;
+      min-height:42px;
+      padding:10px 15px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(8,7,6,.20);
+      color:#f7e7d3;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.2px;
+      box-shadow:0 14px 28px rgba(0,0,0,.18);
+      backdrop-filter:blur(10px);
+      transition:transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .hero-social:hover{
+      transform:translateY(-2px);
+      border-color:rgba(241,194,122,.36);
+      background:rgba(255,255,255,.07);
+    }
+
+    .hero-social svg{
+      width:17px;
+      height:17px;
+      display:block;
+      flex-shrink:0;
     }
 
     .whatsapp-btn{
@@ -451,19 +484,18 @@
 
     .booking-card{
       position:relative;
-      background:
-        linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.015)),
-        rgba(16,13,11,.34);
-      border:1px solid rgba(255,255,255,.16);
+      background:transparent;
+      border:0;
       border-radius:30px;
       padding:24px;
-      backdrop-filter:blur(20px) saturate(1.06);
-      -webkit-backdrop-filter:blur(20px) saturate(1.06);
-      box-shadow:var(--shadow-xl);
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
+      box-shadow:none;
       margin-left:auto;
       max-width:390px;
       width:100%;
       overflow:hidden;
+      transform:translateY(-72px);
     }
 
     .booking-card::before{
@@ -474,6 +506,7 @@
       height:180px;
       background:radial-gradient(circle, rgba(241,194,122,.18), transparent 70%);
       pointer-events:none;
+      display:none;
     }
 
     .booking-card::after{
@@ -482,6 +515,7 @@
       inset:0;
       background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,0));
       pointer-events:none;
+      display:none;
     }
 
     .booking-card h3{
@@ -489,6 +523,7 @@
       z-index:1;
       font-size:32px;
       margin-bottom:10px;
+      text-shadow:0 10px 26px rgba(0,0,0,.48);
     }
 
     .booking-card p{
@@ -498,6 +533,7 @@
       color:#decbb8;
       line-height:1.7;
       font-size:15px;
+      text-shadow:0 8px 22px rgba(0,0,0,.48);
     }
 
     .form{display:grid;gap:12px;position:relative;z-index:1}
@@ -517,9 +553,23 @@
       transition:border-color .2s ease, background .2s ease, transform .2s ease;
     }
 
+    .booking-card input,
+    .booking-card textarea,
+    .booking-card select{
+      background:rgba(0,0,0,.12);
+      border-color:rgba(255,255,255,.24);
+      box-shadow:0 10px 24px rgba(0,0,0,.14);
+    }
+
     input:focus,textarea:focus,select:focus{
       border-color:rgba(241,194,122,.45);
       background:rgba(255,255,255,.10);
+    }
+
+    .booking-card input:focus,
+    .booking-card textarea:focus,
+    .booking-card select:focus{
+      background:rgba(0,0,0,.18);
     }
 
     input::placeholder,textarea::placeholder{
@@ -645,77 +695,49 @@
 
     .story-controls{
       position:absolute;
-      right:22px;
-      bottom:22px;
+      inset:0;
       z-index:2;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-height:52px;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(11,8,6,.70);
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:0 18px 34px rgba(0,0,0,.32);
-      backdrop-filter:blur(14px);
+      pointer-events:none;
     }
 
     .story-arrow{
-      width:36px;
-      height:36px;
+      position:absolute;
+      top:50%;
+      width:50px;
+      height:50px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       border-radius:50%;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(11,8,6,.62);
       color:#fff;
       cursor:pointer;
+      box-shadow:0 18px 34px rgba(0,0,0,.32);
+      backdrop-filter:blur(14px);
+      pointer-events:auto;
+      transform:translateY(-50%);
       transition:background .2s ease, border-color .2s ease, transform .2s ease;
     }
 
+    .story-arrow.prev{
+      left:18px;
+    }
+
+    .story-arrow.next{
+      right:18px;
+    }
+
     .story-arrow:hover{
-      transform:translateY(-1px);
+      transform:translateY(-50%) scale(1.04);
       background:rgba(215,163,93,.16);
       border-color:rgba(241,194,122,.34);
     }
 
     .story-arrow svg{
-      width:18px;
-      height:18px;
+      width:21px;
+      height:21px;
       display:block;
-    }
-
-    .story-dots{
-      display:flex;
-      align-items:center;
-      gap:7px;
-      padding:0 2px;
-    }
-
-    .story-dot{
-      width:8px;
-      height:8px;
-      padding:0;
-      border-radius:999px;
-      border:1px solid rgba(241,194,122,.45);
-      background:rgba(255,255,255,.14);
-      cursor:pointer;
-      transition:width .22s ease, background .22s ease, border-color .22s ease;
-    }
-
-    .story-dot.active{
-      width:24px;
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));
-      border-color:rgba(255,222,176,.88);
-    }
-
-    .story-counter{
-      min-width:54px;
-      color:#f7e7d3;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1.3px;
     }
 
     .signature-header{
@@ -755,8 +777,14 @@
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
-      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease, background-size .7s ease;
+      transition:
+        transform .55s cubic-bezier(.18,.8,.22,1),
+        box-shadow .55s ease,
+        border-color .45s ease,
+        filter .55s ease,
+        background-size 1s cubic-bezier(.18,.8,.22,1);
       isolation:isolate;
+      will-change:transform,background-size;
     }
 
     .dish-card::before{
@@ -766,39 +794,45 @@
       background:
         linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.10) 38%,rgba(0,0,0,.82) 100%);
       z-index:0;
-      transition:opacity .28s ease;
+      transition:opacity .45s ease, background .45s ease;
     }
 
     .dish-card::after{
       content:"";
       position:absolute;
-      inset:auto -40px -40px auto;
-      width:150px;
-      height:150px;
-      background:radial-gradient(circle, rgba(241,194,122,.24), transparent 70%);
+      inset:0;
+      background:linear-gradient(118deg,transparent 0%,transparent 38%,rgba(255,255,255,.16) 48%,rgba(241,194,122,.22) 52%,transparent 62%,transparent 100%);
       opacity:0;
-      transition:opacity .28s ease;
-      z-index:0;
+      transform:translateX(-130%);
+      transition:opacity .45s ease, transform .85s cubic-bezier(.18,.8,.22,1);
+      z-index:1;
       pointer-events:none;
     }
 
     .dish-card:hover{
-      transform:translateY(-6px);
+      transform:translateY(-14px) scale(1.035);
       box-shadow:
-        0 30px 60px rgba(0,0,0,.40),
-        0 0 0 1px rgba(241,194,122,.16),
-        0 0 28px rgba(241,194,122,.16);
-      border-color:rgba(241,194,122,.28);
-      background-size:108%;
+        0 38px 82px rgba(0,0,0,.54),
+        0 0 0 1px rgba(241,194,122,.26),
+        0 0 42px rgba(241,194,122,.18);
+      border-color:rgba(241,194,122,.42);
+      background-size:116%;
+      filter:saturate(1.08) contrast(1.04);
+    }
+
+    .dish-card:hover::before{
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.08) 32%,rgba(0,0,0,.90) 100%);
     }
 
     .dish-card:hover::after{
       opacity:1;
+      transform:translateX(130%);
     }
 
     .dish-overlay{
       position:relative;
-      z-index:1;
+      z-index:2;
       width:100%;
       padding:22px;
       display:flex;
@@ -810,6 +844,11 @@
       display:block;
       width:100%;
       margin:0;
+      transition:transform .45s cubic-bezier(.18,.8,.22,1);
+    }
+
+    .dish-card:hover .dish-top{
+      transform:translateY(-8px);
     }
 
     .dish-top h3{
@@ -818,16 +857,6 @@
       max-width:100%;
       color:#fff;
       text-shadow:0 8px 26px rgba(0,0,0,.56);
-    }
-
-    .dish-top h3::after{
-      content:"";
-      display:block;
-      width:58px;
-      height:2px;
-      margin-top:12px;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--gold-2),rgba(241,194,122,.18));
     }
 
     .tasting-wrap{
@@ -1475,7 +1504,7 @@
           radial-gradient(circle at 18% 10%, rgba(141,31,20,.10), transparent 26%),
           radial-gradient(circle at 78% 24%, rgba(215,163,93,.14), transparent 24%),
           linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.26)),
-          url('hero-cover-mobile.png') center 42% / cover no-repeat;
+          url('hero-cover-mobile.png') center 64% / cover no-repeat;
       }
 
       @supports (height:100dvh){
@@ -1519,6 +1548,7 @@
         border:0;
         backdrop-filter:none;
         box-shadow:none;
+        transform:none;
       }
 
       .eyebrow{
@@ -1543,6 +1573,14 @@
         line-height:1.62;
         margin:0;
         max-width:100%;
+      }
+
+      .hero-social{
+        margin-top:16px;
+        min-height:38px;
+        padding:9px 13px;
+        font-size:12px;
+        background:rgba(8,7,6,.34);
       }
 
       .hero-actions,
@@ -1617,11 +1655,21 @@
       }
 
       .story-controls{
-        left:14px;
-        right:14px;
-        bottom:14px;
-        justify-content:space-between;
-        min-height:50px;
+        inset:0;
+        min-height:auto;
+      }
+
+      .story-arrow{
+        width:42px;
+        height:42px;
+      }
+
+      .story-arrow.prev{
+        left:12px;
+      }
+
+      .story-arrow.next{
+        right:12px;
       }
 
       .story-badge{
@@ -1655,11 +1703,6 @@
         font-size:18px;
         line-height:1.02;
         word-break:break-word;
-      }
-
-      .dish-top h3::after{
-        width:26px;
-        margin-top:8px;
       }
 
       .tasting-wrap{
@@ -1927,9 +1970,6 @@
         font-size:15px;
       }
 
-      .dish-top h3::after{
-        width:20px;
-      }
     }
   </style>
 </head>
@@ -2004,6 +2044,13 @@
 
           <a class="btn-secondary" href="#specialita" data-i18n data-it="Scopri le specialità" data-en="Discover specialties">Scopri le specialità</a>
         </div>
+
+        <a class="hero-social" href="https://www.instagram.com/beef_grill_experience?igsh=OTB6N2ptdmh6NTh4" target="_blank" rel="noopener noreferrer" aria-label="Instagram Beef Grill Experience">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+          </svg>
+          <span>@beef_grill_experience</span>
+        </a>
       </div>
 
       <aside class="booking-card panel">
@@ -2069,10 +2116,10 @@
         <div class="story-carousel">
           <div class="story-track">
             <figure class="story-slide active" data-story-slide>
-              <img src="locale.webp" alt="Interno del locale Beef Grill Experience" />
+              <img src="dehor-esterno.png" alt="Dehor esterno di Beef Grill Experience affacciato sul porto al tramonto" />
             </figure>
             <figure class="story-slide" data-story-slide aria-hidden="true">
-              <img src="dehor-esterno.png" alt="Dehor esterno di Beef Grill Experience affacciato sul porto al tramonto" />
+              <img src="locale.webp" alt="Interno del locale Beef Grill Experience" />
             </figure>
           </div>
         </div>
@@ -2083,20 +2130,13 @@
         </div>
 
         <div class="story-controls" aria-label="Controlli galleria">
-          <button class="story-arrow" type="button" onclick="changeStorySlide(-1)" aria-label="Foto precedente">
+          <button class="story-arrow prev" type="button" onclick="changeStorySlide(-1)" aria-label="Foto precedente">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="m15 18-6-6 6-6"/>
             </svg>
           </button>
 
-          <div class="story-dots">
-            <button class="story-dot active" type="button" onclick="showStorySlide(0)" data-story-dot aria-label="Mostra interno" aria-current="true"></button>
-            <button class="story-dot" type="button" onclick="showStorySlide(1)" data-story-dot aria-label="Mostra dehor"></button>
-          </div>
-
-          <span class="story-counter" data-story-counter>01 / 02</span>
-
-          <button class="story-arrow" type="button" onclick="changeStorySlide(1)" aria-label="Foto successiva">
+          <button class="story-arrow next" type="button" onclick="changeStorySlide(1)" aria-label="Foto successiva">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="m9 18 6-6-6-6"/>
             </svg>
@@ -2117,7 +2157,7 @@
       </div>
 
       <div class="menu-grid">
-        <article class="dish-card" style="background-image:url('Schermata 2026-04-14 alle 16.36.23.png'); background-position:center center;">
+        <article class="dish-card" style="background-image:url('menu-tris-tartare.png'); background-position:center center;">
           <div class="dish-overlay">
             <div class="dish-top">
               <h3 data-i18n data-it="Tris di Tartare" data-en="Tartare Trio">Tris di Tartare</h3>
@@ -2125,26 +2165,26 @@
           </div>
         </article>
 
-        <article class="dish-card" style="background-image:url('IMG_0253.JPG'); background-position:center center;">
+        <article class="dish-card" style="background-image:url('menu-da-condividere.png'); background-position:center center;">
           <div class="dish-overlay">
             <div class="dish-top">
-              <h3 data-i18n data-it="Tomahawk alla Fiamma" data-en="Flame Tomahawk">Tomahawk alla Fiamma</h3>
+              <h3 data-i18n data-it="Da condividere" data-en="To Share">Da condividere</h3>
             </div>
           </div>
         </article>
 
-        <article class="dish-card" style="background-image:url('IMG_0254.JPG'); background-position:center center;">
+        <article class="dish-card" style="background-image:url('menu-dalla-griglia.png'); background-position:center center;">
           <div class="dish-overlay">
             <div class="dish-top">
-              <h3 data-i18n data-it="Costine" data-en="Ribs">Costine</h3>
+              <h3 data-i18n data-it="Dalla griglia" data-en="From the Grill">Dalla griglia</h3>
             </div>
           </div>
         </article>
 
-        <article class="dish-card" style="background-image:url('IMG_0252.JPG'); background-position:center center;">
+        <article class="dish-card" style="background-image:url('menu-novita-2026.png'); background-position:center center;">
           <div class="dish-overlay">
             <div class="dish-top">
-              <h3 data-i18n data-it="Tagliata & Carne Argentina" data-en="Sliced Steak & Argentinian Beef">Tagliata & Carne Argentina</h3>
+              <h3 data-i18n data-it="Novità 2026" data-en="New for 2026">Novità 2026</h3>
             </div>
           </div>
         </article>
@@ -2251,12 +2291,12 @@
 
           <div class="contact-item">
             <small data-i18n data-it="Telefono" data-en="Phone">Telefono</small>
-            <a href="tel:+3901851771977"><strong>0185 1771977</strong></a>
+            <a href="tel:+393791876133"><strong>+39 379 187 6133</strong></a>
           </div>
 
           <div class="contact-item">
             <small>Email</small>
-            <a href="mailto:info@beefgrillexperience.it"><strong>info@beefgrillexperience.it</strong></a>
+            <a href="mailto:beefgrillexperience20@gmail.com"><strong>beefgrillexperience20@gmail.com</strong></a>
           </div>
 
           <div class="contact-item">
@@ -2268,7 +2308,7 @@
             <small data-i18n data-it="Orari" data-en="Opening hours">Orari</small>
             <p>
               <span data-i18n data-it="Lunedì - Mercoledì: 19.30 - 23.30" data-en="Monday - Wednesday: 7:30 PM - 11:30 PM">Lunedì - Mercoledì: 19.30 - 23.30</span><br />
-              <span data-i18n data-it="Giovedì: Chiuso" data-en="Thursday: Closed">Giovedì: Chiuso</span><br />
+              <span data-i18n data-it="Giovedì: su prenotazione" data-en="Thursday: by reservation">Giovedì: su prenotazione</span><br />
               <span data-i18n data-it="Venerdì e Sabato: 19.30 - 00.00" data-en="Friday and Saturday: 7:30 PM - 12:00 AM">Venerdì e Sabato: 19.30 - 00.00</span><br />
               <span data-i18n data-it="Domenica: 9.00 - 17.00" data-en="Sunday: 9:00 AM - 5:00 PM">Domenica: 9.00 - 17.00</span>
             </p>
@@ -2285,7 +2325,7 @@
             <span class="btn-label" data-i18n data-it="Prenota via WhatsApp" data-en="Book via WhatsApp">Prenota via WhatsApp</span>
           </button>
 
-          <a class="btn-secondary" href="tel:+3901851771977" data-i18n data-it="Chiama ora" data-en="Call now">Chiama ora</a>
+          <a class="btn-secondary" href="tel:+393791876133" data-i18n data-it="Chiama ora" data-en="Call now">Chiama ora</a>
         </div>
       </div>
 
@@ -2306,17 +2346,11 @@
             <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
           </svg>
         </a>
-
-        <a class="social-link" href="https://www.facebook.com/BeefGrillExperience?mibextid=wwXIfr&rdid=6UWIsvRKRVJKCrJ2&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EQjUYMSv1%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H16.8V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V11H8v3h2.7v8h2.8z"/>
-          </svg>
-        </a>
       </div>
 
       <div class="footer-meta">
         <span data-i18n data-it="Via Porto Turistico, 18, 16043 Chiavari GE" data-en="Via Porto Turistico, 18, 16043 Chiavari GE">Via Porto Turistico, 18, 16043 Chiavari GE</span><br />
-        0185 1771977 • info@beefgrillexperience.it
+        beefgrillexperience20@gmail.com
       </div>
     </div>
   </footer>
@@ -2478,7 +2512,7 @@
       <span class="btn-label" data-i18n data-it="Prenota ora" data-en="Book now">Prenota ora</span>
     </button>
 
-    <a class="call-btn" href="tel:+3901851771977" aria-label="Chiama il ristorante">
+    <a class="call-btn" href="tel:+393791876133" aria-label="Chiama il ristorante">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .4 3 .4.7 0 1.2.5 1.2 1.2V20c0 .7-.5 1.2-1.2 1.2C10.7 21.2 2.8 13.3 2.8 3.6 2.8 2.9 3.3 2.4 4 2.4h3.5c.7 0 1.2.5 1.2 1.2 0 1 .1 2 .4 3 .1.4 0 .9-.3 1.2l-2.2 2.2z"/>
       </svg>
@@ -2626,22 +2660,6 @@
         slide.classList.toggle('active', isActive);
         slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
       });
-
-      document.querySelectorAll('[data-story-dot]').forEach((dot, index) => {
-        const isActive = index === storySlideIndex;
-        dot.classList.toggle('active', isActive);
-        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
-      });
-
-      const counter = document.querySelector('[data-story-counter]');
-      if(counter){
-        counter.textContent = `${String(storySlideIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-      }
-    }
-
-    function showStorySlide(index){
-      storySlideIndex = index;
-      updateStoryCarousel();
     }
 
     function changeStorySlide(delta){
