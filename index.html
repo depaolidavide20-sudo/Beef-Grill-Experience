@@ -9,6 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="menu-tris-tartare-mobile.jpg" media="(max-width: 780px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="menu-da-condividere-mobile.jpg" media="(max-width: 780px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="menu-dalla-griglia-mobile.jpg" media="(max-width: 780px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="menu-novita-2026-mobile.jpg" media="(max-width: 780px)" fetchpriority="high" />
 
   <style>
     :root{
@@ -169,17 +173,18 @@
     }
 
     .brand-mark{
-      width:112px;
-      height:72px;
-      border-radius:18px;
+      width:148px;
+      height:70px;
+      border-radius:16px;
       background:
-        linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0)),
+        radial-gradient(circle at 50% 0%,rgba(255,255,255,.08),transparent 48%),
+        linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),
         #030303;
-      border:1px solid rgba(215,163,93,.24);
+      border:1px solid rgba(215,163,93,.32);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 16px 34px rgba(0,0,0,.30);
-      padding:5px;
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 16px 34px rgba(0,0,0,.32);
+      padding:9px 14px;
       flex-shrink:0;
       display:flex;
       align-items:center;
@@ -187,12 +192,40 @@
       overflow:hidden;
     }
 
-    .brand-mark img{
-      display:block;
+    .brand-logo{
       width:100%;
-      height:100%;
-      object-fit:contain;
-      filter:contrast(1.08) brightness(1.08);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      text-align:center;
+      text-transform:uppercase;
+      line-height:1;
+      text-shadow:0 2px 14px rgba(255,255,255,.16);
+    }
+
+    .brand-logo-main{
+      font-family:Inter,sans-serif;
+      font-size:25px;
+      font-weight:800;
+      letter-spacing:.08em;
+      margin-right:-.08em;
+    }
+
+    .brand-logo-line{
+      width:82%;
+      height:1px;
+      margin:7px 0 6px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.92),transparent);
+    }
+
+    .brand-logo-sub{
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:.14em;
+      margin-right:-.14em;
+      color:rgba(255,255,255,.82);
     }
 
     .nav-links{
@@ -1225,6 +1258,15 @@
       text-transform:uppercase;
     }
 
+    .footer-legal a{
+      color:var(--muted);
+      transition:color .2s ease;
+    }
+
+    .footer-legal a:hover{
+      color:var(--gold-2);
+    }
+
     .modal,
     .tasting-modal{
       position:fixed;
@@ -1583,15 +1625,29 @@
       }
 
       .brand-mark{
-        width:82px;
-        height:54px;
+        width:132px;
+        height:62px;
         border-radius:14px;
-        padding:4px;
+        padding:8px 12px;
         background:#030303;
         border:1px solid rgba(215,163,93,.18);
         box-shadow:
           inset 0 1px 0 rgba(255,255,255,.04),
           0 10px 22px rgba(0,0,0,.16);
+      }
+
+      .brand-logo-main{
+        font-size:22px;
+      }
+
+      .brand-logo-line{
+        margin:6px 0 5px;
+      }
+
+      .brand-logo-sub{
+        font-size:8px;
+        letter-spacing:.13em;
+        margin-right:-.13em;
       }
 
       .hero{
@@ -1801,6 +1857,22 @@
         box-shadow:
           0 26px 58px rgba(0,0,0,.44),
           0 0 0 1px rgba(255,255,255,.05);
+      }
+
+      .menu-grid .dish-card:nth-child(1){
+        background-image:url('menu-tris-tartare-mobile.jpg') !important;
+      }
+
+      .menu-grid .dish-card:nth-child(2){
+        background-image:url('menu-da-condividere-mobile.jpg') !important;
+      }
+
+      .menu-grid .dish-card:nth-child(3){
+        background-image:url('menu-dalla-griglia-mobile.jpg') !important;
+      }
+
+      .menu-grid .dish-card:nth-child(4){
+        background-image:url('menu-novita-2026-mobile.jpg') !important;
       }
 
       .dish-card.active{
@@ -2176,7 +2248,11 @@
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Beef Grill Experience">
         <div class="brand-mark">
-          <img src="IMG_0274.JPG" alt="Beef Grill Experience" />
+          <div class="brand-logo" aria-hidden="true">
+            <span class="brand-logo-main">BEEF</span>
+            <span class="brand-logo-line"></span>
+            <span class="brand-logo-sub">Grill Experience</span>
+          </div>
         </div>
       </a>
 
@@ -2317,7 +2393,7 @@
               <img src="dehor-esterno.png" alt="Dehor esterno di Beef Grill Experience affacciato sul porto al tramonto" />
             </figure>
             <figure class="story-slide" data-story-slide aria-hidden="true">
-              <img src="locale.webp" alt="Interno del locale Beef Grill Experience" />
+              <img src="story-interno-sala.jpg" alt="Interno della sala Beef Grill Experience con tavoli apparecchiati e parete vini" />
             </figure>
           </div>
         </div>
@@ -2536,16 +2612,12 @@
       <div class="footer-brand">Beef Grill Experience</div>
       <div class="footer-sub" data-i18n data-it="Steakhouse • Chiavari • Marina" data-en="Steakhouse • Chiavari • Marina">Steakhouse • Chiavari • Marina</div>
 
-      <div class="footer-meta">
-        <span data-i18n data-it="Via Porto Turistico, 18, 16043 Chiavari GE" data-en="Via Porto Turistico, 18, 16043 Chiavari GE">Via Porto Turistico, 18, 16043 Chiavari GE</span><br />
-        beefgrillexperience20@gmail.com
-      </div>
-
       <div class="footer-legal">
         <strong>Taste srls</strong>
         <span>Porto turistico di Chiavari box 18</span>
         <span>P.I/CF: 02354800993</span>
         <span>Codice univoco: X2PH38J</span>
+        <a href="mailto:beefgrillexperience20@gmail.com">beefgrillexperience20@gmail.com</a>
       </div>
 
       <div class="footer-socials">
@@ -2724,7 +2796,21 @@
 
   <script>
     const WHATSAPP_NUMBER = '393791876133';
+    const MENU_MOBILE_IMAGE_SOURCES = [
+      'menu-tris-tartare-mobile.jpg',
+      'menu-da-condividere-mobile.jpg',
+      'menu-dalla-griglia-mobile.jpg',
+      'menu-novita-2026-mobile.jpg'
+    ];
     let currentLanguage = 'it';
+
+    function preloadMenuImages(){
+      MENU_MOBILE_IMAGE_SOURCES.forEach(src => {
+        const img = new Image();
+        img.src = src;
+        if(img.decode) img.decode().catch(() => {});
+      });
+    }
 
     function applyPlaceholders(lang){
       document.querySelectorAll('[data-ph-it]').forEach(el => {
@@ -2943,6 +3029,7 @@
     });
 
     setLanguage('it');
+    preloadMenuImages();
     updateStoryCarousel();
     initStoryCarouselSwipe();
     updateMenuCarousel();
