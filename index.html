@@ -173,8 +173,8 @@
     }
 
     .brand-mark{
-      width:148px;
-      height:70px;
+      width:206px;
+      height:88px;
       border-radius:16px;
       background:
         radial-gradient(circle at 50% 0%,rgba(255,255,255,.08),transparent 48%),
@@ -184,7 +184,7 @@
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
         0 16px 34px rgba(0,0,0,.32);
-      padding:9px 14px;
+      padding:7px 10px;
       flex-shrink:0;
       display:flex;
       align-items:center;
@@ -192,40 +192,13 @@
       overflow:hidden;
     }
 
-    .brand-logo{
+    .brand-logo-img{
       width:100%;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      text-align:center;
-      text-transform:uppercase;
-      line-height:1;
-      text-shadow:0 2px 14px rgba(255,255,255,.16);
-    }
-
-    .brand-logo-main{
-      font-family:Inter,sans-serif;
-      font-size:25px;
-      font-weight:800;
-      letter-spacing:.08em;
-      margin-right:-.08em;
-    }
-
-    .brand-logo-line{
-      width:82%;
-      height:1px;
-      margin:7px 0 6px;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.92),transparent);
-    }
-
-    .brand-logo-sub{
-      font-size:10px;
-      font-weight:500;
-      letter-spacing:.14em;
-      margin-right:-.14em;
-      color:rgba(255,255,255,.82);
+      height:100%;
+      object-fit:contain;
+      filter:
+        drop-shadow(0 8px 18px rgba(0,0,0,.28))
+        drop-shadow(0 0 8px rgba(255,255,255,.08));
     }
 
     .nav-links{
@@ -850,13 +823,28 @@
       will-change:transform,background-size;
     }
 
+    .dish-card-media{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .dish-card-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter:saturate(1.02) contrast(1.02);
+    }
+
     .dish-card::before{
       content:"";
       position:absolute;
       inset:0;
       background:
         linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.10) 38%,rgba(0,0,0,.82) 100%);
-      z-index:0;
+      z-index:1;
       transition:opacity .45s ease, background .45s ease;
     }
 
@@ -1258,6 +1246,204 @@
       color:var(--gold-2);
     }
 
+    .footer-policy-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px 14px;
+      max-width:760px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .footer-policy-links button{
+      border:0;
+      padding:0;
+      background:none;
+      color:inherit;
+      cursor:pointer;
+      text-decoration:underline;
+      text-decoration-color:rgba(241,194,122,.28);
+      text-underline-offset:4px;
+      transition:color .2s ease, text-decoration-color .2s ease;
+    }
+
+    .footer-policy-links button:hover{
+      color:var(--gold-2);
+      text-decoration-color:rgba(241,194,122,.72);
+    }
+
+    .map-consent{
+      min-height:540px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      padding:28px;
+      text-align:center;
+      color:var(--muted);
+      background:
+        radial-gradient(circle at 50% 0%,rgba(241,194,122,.10),transparent 34%),
+        linear-gradient(180deg,#15110f,#0e0c0a);
+    }
+
+    .map-consent strong{
+      display:block;
+      color:var(--text);
+      font-family:"Cormorant Garamond",serif;
+      font-size:34px;
+      line-height:1;
+    }
+
+    .map-consent p{
+      max-width:420px;
+      margin:0;
+      line-height:1.65;
+    }
+
+    .map-consent button,
+    .cookie-actions button{
+      min-height:44px;
+      border-radius:999px;
+      border:1px solid rgba(241,194,122,.26);
+      padding:10px 18px;
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    .map-consent button,
+    .cookie-accept{
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      color:#1d130a;
+    }
+
+    .cookie-essential{
+      background:rgba(255,255,255,.04);
+      color:#f4eadf;
+    }
+
+    .cookie-banner{
+      position:fixed;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:260;
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      max-width:980px;
+      margin:0 auto;
+      padding:18px;
+      border-radius:22px;
+      background:rgba(14,11,9,.96);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 24px 60px rgba(0,0,0,.48);
+      backdrop-filter:blur(14px);
+    }
+
+    .cookie-banner.show{
+      display:flex;
+    }
+
+    .cookie-banner p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:13px;
+    }
+
+    .cookie-banner strong{
+      display:block;
+      color:var(--text);
+      margin-bottom:4px;
+      font-size:14px;
+    }
+
+    .cookie-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+      flex-shrink:0;
+    }
+
+    .legal-modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:240;
+      padding:20px;
+      background:rgba(7,6,5,.84);
+      backdrop-filter:blur(10px);
+    }
+
+    .legal-modal.open{
+      display:flex;
+    }
+
+    .legal-box{
+      position:relative;
+      width:min(880px,100%);
+      max-height:min(88vh,860px);
+      overflow:auto;
+      padding:34px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg,#181410,#0f0d0b);
+      box-shadow:var(--shadow-xl);
+    }
+
+    .legal-box h3{
+      font-size:42px;
+      margin:0 52px 14px 0;
+    }
+
+    .legal-box h4{
+      margin:22px 0 8px;
+      font-family:Inter,sans-serif;
+      font-size:15px;
+      letter-spacing:.7px;
+      text-transform:uppercase;
+      color:var(--gold-2);
+    }
+
+    .legal-box p,
+    .legal-box li{
+      color:var(--muted);
+      line-height:1.72;
+      font-size:14px;
+    }
+
+    .legal-box ul{
+      margin:0;
+      padding-left:18px;
+    }
+
+    .legal-box a{
+      color:var(--gold-2);
+      text-decoration:underline;
+      text-underline-offset:4px;
+    }
+
+    .legal-close{
+      position:absolute;
+      top:14px;
+      right:14px;
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      cursor:pointer;
+      font-size:18px;
+      z-index:2;
+    }
+
     .modal,
     .tasting-modal{
       position:fixed;
@@ -1497,7 +1683,7 @@
 
     @media (max-width:780px){
       :root{
-        --header-h:60px;
+        --header-h:76px;
       }
 
       .desktop-only{display:none !important}
@@ -1616,29 +1802,15 @@
       }
 
       .brand-mark{
-        width:132px;
-        height:62px;
+        width:156px;
+        height:68px;
         border-radius:14px;
-        padding:8px 12px;
+        padding:5px 8px;
         background:#030303;
         border:1px solid rgba(215,163,93,.18);
         box-shadow:
           inset 0 1px 0 rgba(255,255,255,.04),
           0 10px 22px rgba(0,0,0,.16);
-      }
-
-      .brand-logo-main{
-        font-size:22px;
-      }
-
-      .brand-logo-line{
-        margin:6px 0 5px;
-      }
-
-      .brand-logo-sub{
-        font-size:8px;
-        letter-spacing:.13em;
-        margin-right:-.13em;
       }
 
       .hero{
@@ -1825,44 +1997,42 @@
       }
 
       .menu-grid{
-        display:block;
+        display:flex;
         position:relative;
-        min-height:0;
+        gap:0;
+        overflow-x:auto;
+        overflow-y:hidden;
+        scroll-snap-type:x mandatory;
+        scroll-behavior:smooth;
+        -webkit-overflow-scrolling:touch;
         aspect-ratio:1.06 / 1;
+        scrollbar-width:none;
+      }
+
+      .menu-grid::-webkit-scrollbar{
+        display:none;
       }
 
       .dish-card{
         display:flex;
-        position:absolute;
-        inset:0;
+        position:relative;
+        inset:auto;
+        flex:0 0 100%;
         width:100%;
         height:100%;
+        aspect-ratio:1.06 / 1;
         min-height:0;
         border-radius:28px;
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-        transform:translateX(10px) scale(.992);
-        transition:opacity .28s ease, visibility .28s ease, transform .28s ease;
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+        transform:none;
+        scroll-snap-align:center;
+        scroll-snap-stop:always;
+        transition:filter .25s ease, border-color .25s ease;
         box-shadow:
           0 26px 58px rgba(0,0,0,.44),
           0 0 0 1px rgba(255,255,255,.05);
-      }
-
-      .menu-grid .dish-card:nth-child(1){
-        background-image:url('menu-tris-tartare-mobile.jpg') !important;
-      }
-
-      .menu-grid .dish-card:nth-child(2){
-        background-image:url('menu-da-condividere-mobile.jpg') !important;
-      }
-
-      .menu-grid .dish-card:nth-child(3){
-        background-image:url('menu-dalla-griglia-mobile.jpg') !important;
-      }
-
-      .menu-grid .dish-card:nth-child(4){
-        background-image:url('menu-novita-2026-mobile.jpg') !important;
       }
 
       .dish-card.active{
@@ -2137,6 +2307,15 @@
         min-height:320px;
       }
 
+      .map-consent{
+        min-height:320px;
+        padding:22px;
+      }
+
+      .map-consent strong{
+        font-size:28px;
+      }
+
       .footer-brand{
         font-size:25px;
       }
@@ -2162,6 +2341,36 @@
 
       .footer-legal strong{
         font-size:13px;
+      }
+
+      .footer-policy-links{
+        font-size:12px;
+        gap:8px 12px;
+      }
+
+      .cookie-banner{
+        left:10px;
+        right:10px;
+        bottom:96px;
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .cookie-actions{
+        justify-content:stretch;
+      }
+
+      .cookie-actions button{
+        flex:1;
+      }
+
+      .legal-box{
+        padding:26px 20px;
+        border-radius:24px;
+      }
+
+      .legal-box h3{
+        font-size:34px;
       }
 
       .mobile-bookbar{
@@ -2243,11 +2452,7 @@
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Beef Grill Experience">
         <div class="brand-mark">
-          <div class="brand-logo" aria-hidden="true">
-            <span class="brand-logo-main">BEEF</span>
-            <span class="brand-logo-line"></span>
-            <span class="brand-logo-sub">Grill Experience</span>
-          </div>
+          <img class="brand-logo-img" src="beef-grill-logo.png" alt="Beef Grill Experience" />
         </div>
       </a>
 
@@ -2427,7 +2632,11 @@
 
       <div class="menu-carousel" data-menu-carousel>
       <div class="menu-grid">
-        <article class="dish-card active" data-menu-slide style="background-image:url('menu-tris-tartare.png'); background-position:center center;">
+        <article class="dish-card active" data-menu-slide>
+          <picture class="dish-card-media">
+            <source media="(max-width: 780px)" srcset="menu-tris-tartare-mobile.jpg" />
+            <img src="menu-tris-tartare.png" alt="Tris di tartare Beef Grill Experience" loading="eager" decoding="async" fetchpriority="high" />
+          </picture>
           <div class="dish-overlay">
             <div class="dish-top">
               <h3 data-i18n data-it="Tris di Tartare" data-en="Tartare Trio">Tris di Tartare</h3>
@@ -2435,7 +2644,11 @@
           </div>
         </article>
 
-        <article class="dish-card" data-menu-slide style="background-image:url('menu-da-condividere.png'); background-position:center center;">
+        <article class="dish-card" data-menu-slide>
+          <picture class="dish-card-media">
+            <source media="(max-width: 780px)" srcset="menu-da-condividere-mobile.jpg" />
+            <img src="menu-da-condividere.png" alt="Piatto di carne da condividere Beef Grill Experience" loading="eager" decoding="async" />
+          </picture>
           <div class="dish-overlay">
             <div class="dish-top">
               <h3 data-i18n data-it="Da condividere" data-en="To Share">Da condividere</h3>
@@ -2443,7 +2656,11 @@
           </div>
         </article>
 
-        <article class="dish-card" data-menu-slide style="background-image:url('menu-dalla-griglia.png'); background-position:center center;">
+        <article class="dish-card" data-menu-slide>
+          <picture class="dish-card-media">
+            <source media="(max-width: 780px)" srcset="menu-dalla-griglia-mobile.jpg" />
+            <img src="menu-dalla-griglia.png" alt="Carne alla griglia Beef Grill Experience" loading="eager" decoding="async" />
+          </picture>
           <div class="dish-overlay">
             <div class="dish-top">
               <h3 data-i18n data-it="Dalla griglia" data-en="From the Grill">Dalla griglia</h3>
@@ -2451,7 +2668,11 @@
           </div>
         </article>
 
-        <article class="dish-card" data-menu-slide style="background-image:url('menu-novita-2026.png'); background-position:center center;">
+        <article class="dish-card" data-menu-slide>
+          <picture class="dish-card-media">
+            <source media="(max-width: 780px)" srcset="menu-novita-2026-mobile.jpg" />
+            <img src="menu-novita-2026.png" alt="Novità 2026 Beef Grill Experience" loading="eager" decoding="async" />
+          </picture>
           <div class="dish-overlay">
             <div class="dish-top">
               <h3 data-i18n data-it="Novità 2026" data-en="New for 2026">Novità 2026</h3>
@@ -2597,7 +2818,11 @@
       </div>
 
       <div class="map-card">
-        <iframe src="https://www.google.com/maps?q=Via%20Porto%20Turistico%2C%2018%2C%2016043%20Chiavari%20GE&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-consent" id="mapConsent">
+          <strong>Mappa interattiva</strong>
+          <p>Per visualizzare Google Maps è necessario accettare i cookie e i servizi di terze parti collegati alla mappa.</p>
+          <button type="button" onclick="acceptCookieConsent()">Accetta e mostra la mappa</button>
+        </div>
       </div>
     </div>
   </section>
@@ -2615,6 +2840,13 @@
         <a href="mailto:beefgrillexperience20@gmail.com">beefgrillexperience20@gmail.com</a>
       </div>
 
+      <div class="footer-policy-links" aria-label="Documenti legali">
+        <button type="button" onclick="openLegalModal('privacyModal')">Privacy Policy</button>
+        <button type="button" onclick="openLegalModal('cookieModal')">Cookie Policy</button>
+        <button type="button" onclick="openLegalModal('legalModal')">Note legali</button>
+        <button type="button" onclick="showCookieBanner()">Preferenze cookie</button>
+      </div>
+
       <div class="footer-socials">
         <a class="social-link" href="https://www.instagram.com/beef_grill_experience?igsh=OTB6N2ptdmh6NTh4" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -2624,6 +2856,66 @@
       </div>
     </div>
   </footer>
+
+  <div class="legal-modal" id="privacyModal" aria-hidden="true">
+    <div class="legal-box">
+      <button class="legal-close" type="button" onclick="closeLegalModal('privacyModal')" aria-label="Chiudi Privacy Policy">×</button>
+      <h3>Privacy Policy</h3>
+      <p><strong>Ultimo aggiornamento:</strong> 4 giugno 2026</p>
+      <h4>Titolare del trattamento</h4>
+      <p>Taste srls, Porto turistico di Chiavari box 18, P.I/CF 02354800993, email <a href="mailto:beefgrillexperience20@gmail.com">beefgrillexperience20@gmail.com</a>.</p>
+      <h4>Dati trattati</h4>
+      <p>Il sito può trattare dati inseriti volontariamente dall’utente nei form di prenotazione o nelle comunicazioni email/telefono: nome, recapito, numero di persone, data, ora, preferenza tavolo e note sulla prenotazione.</p>
+      <h4>Finalità e base giuridica</h4>
+      <ul>
+        <li>Gestione delle richieste di prenotazione e contatto: esecuzione di misure precontrattuali richieste dall’utente.</li>
+        <li>Adempimenti amministrativi, fiscali o obblighi di legge: obbligo legale.</li>
+        <li>Sicurezza tecnica del sito: legittimo interesse del titolare.</li>
+      </ul>
+      <h4>Comunicazione a terzi</h4>
+      <p>Le richieste inviate tramite WhatsApp vengono gestite sulla piattaforma WhatsApp/Meta, che opera secondo le proprie condizioni e informative. Il sito contiene inoltre link esterni verso Instagram e Google. I dati non vengono venduti.</p>
+      <h4>Tempi di conservazione</h4>
+      <p>I dati delle richieste vengono conservati per il tempo necessario a gestire la prenotazione e per eventuali obblighi amministrativi o fiscali. Le comunicazioni possono essere conservate per esigenze organizzative e tutela dei diritti.</p>
+      <h4>Diritti dell’interessato</h4>
+      <p>L’utente può chiedere accesso, rettifica, cancellazione, limitazione, opposizione e portabilità dei dati scrivendo a <a href="mailto:beefgrillexperience20@gmail.com">beefgrillexperience20@gmail.com</a>. È sempre possibile proporre reclamo al Garante per la protezione dei dati personali.</p>
+    </div>
+  </div>
+
+  <div class="legal-modal" id="cookieModal" aria-hidden="true">
+    <div class="legal-box">
+      <button class="legal-close" type="button" onclick="closeLegalModal('cookieModal')" aria-label="Chiudi Cookie Policy">×</button>
+      <h3>Cookie Policy</h3>
+      <p><strong>Ultimo aggiornamento:</strong> 4 giugno 2026</p>
+      <h4>Cookie tecnici necessari</h4>
+      <p>Il sito può usare strumenti tecnici necessari al funzionamento, come la memorizzazione della preferenza cookie. Questi strumenti non richiedono consenso.</p>
+      <h4>Servizi di terze parti</h4>
+      <p>Google Maps viene caricato solo dopo consenso dell’utente, perché può comportare richieste verso Google e l’uso di cookie o tecnologie analoghe. I link verso Instagram, Google e WhatsApp portano a piattaforme esterne con proprie informative.</p>
+      <h4>Gestione consenso</h4>
+      <p>L’utente può scegliere “Solo necessari” o “Accetta”. La scelta può essere modificata in qualsiasi momento dal link “Preferenze cookie” nel footer.</p>
+      <h4>Cookie attualmente gestiti dal sito</h4>
+      <ul>
+        <li><strong>beefCookieConsent</strong>: memorizza la preferenza cookie scelta dall’utente. Durata indicativa: 6 mesi.</li>
+        <li><strong>Google Maps</strong>: servizio terzo caricato solo dopo accettazione.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legal-modal" id="legalModal" aria-hidden="true">
+    <div class="legal-box">
+      <button class="legal-close" type="button" onclick="closeLegalModal('legalModal')" aria-label="Chiudi Note legali">×</button>
+      <h3>Note legali</h3>
+      <h4>Dati societari</h4>
+      <p>Taste srls<br />Porto turistico di Chiavari box 18<br />P.I/CF: 02354800993<br />Codice univoco: X2PH38J<br />Email: <a href="mailto:beefgrillexperience20@gmail.com">beefgrillexperience20@gmail.com</a></p>
+      <h4>Contenuti del sito</h4>
+      <p>Testi, immagini e materiali presenti sul sito sono forniti per finalità informative e promozionali. Menù, disponibilità, prezzi, orari e servizi possono variare senza preavviso.</p>
+      <h4>Prenotazioni</h4>
+      <p>L’invio del form apre una chat WhatsApp con messaggio precompilato. La prenotazione si intende confermata solo dopo risposta del ristorante.</p>
+      <h4>Link esterni</h4>
+      <p>Il sito può contenere collegamenti a servizi esterni, tra cui WhatsApp, Instagram, Google Maps e Google Reviews. Taste srls non è responsabile dei contenuti o dei trattamenti effettuati da tali piattaforme.</p>
+      <h4>Avvertenza</h4>
+      <p>Queste informazioni hanno finalità di trasparenza verso l’utente e devono essere mantenute aggiornate in base all’effettivo uso del sito e dei servizi collegati.</p>
+    </div>
+  </div>
 
   <div class="modal" id="bookingModal">
     <div class="modal-box">
@@ -2789,6 +3081,17 @@
     </a>
   </div>
 
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Preferenze cookie">
+    <p>
+      <strong>Preferenze cookie</strong>
+      Usiamo solo cookie tecnici necessari. Google Maps viene caricato solo se accetti i servizi di terze parti.
+    </p>
+    <div class="cookie-actions">
+      <button class="cookie-essential" type="button" onclick="rejectCookieConsent()">Solo necessari</button>
+      <button class="cookie-accept" type="button" onclick="acceptCookieConsent()">Accetta</button>
+    </div>
+  </div>
+
   <script>
     const WHATSAPP_NUMBER = '393791876133';
     const MENU_MOBILE_IMAGE_SOURCES = [
@@ -2797,6 +3100,8 @@
       'menu-dalla-griglia-mobile.jpg',
       'menu-novita-2026-mobile.jpg'
     ];
+    const COOKIE_CONSENT_KEY = 'beefCookieConsent';
+    const MAP_EMBED_URL = 'https://www.google.com/maps?q=Via%20Porto%20Turistico%2C%2018%2C%2016043%20Chiavari%20GE&output=embed';
     let currentLanguage = 'it';
 
     function preloadMenuImages(){
@@ -2805,6 +3110,76 @@
         img.src = src;
         if(img.decode) img.decode().catch(() => {});
       });
+    }
+
+    function setCookieConsent(value){
+      const expires = new Date();
+      expires.setMonth(expires.getMonth() + 6);
+      document.cookie = `${COOKIE_CONSENT_KEY}=${value}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+    }
+
+    function getCookieConsent(){
+      return document.cookie
+        .split('; ')
+        .find(row => row.startsWith(`${COOKIE_CONSENT_KEY}=`))
+        ?.split('=')[1] || '';
+    }
+
+    function showCookieBanner(){
+      const banner = document.getElementById('cookieBanner');
+      if(banner) banner.classList.add('show');
+    }
+
+    function hideCookieBanner(){
+      const banner = document.getElementById('cookieBanner');
+      if(banner) banner.classList.remove('show');
+    }
+
+    function loadGoogleMap(){
+      const holder = document.getElementById('mapConsent');
+      if(!holder || holder.dataset.loaded === 'true') return;
+      const iframe = document.createElement('iframe');
+      iframe.src = MAP_EMBED_URL;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.title = 'Mappa Google Beef Grill Experience';
+      holder.replaceWith(iframe);
+    }
+
+    function acceptCookieConsent(){
+      setCookieConsent('accepted');
+      hideCookieBanner();
+      loadGoogleMap();
+    }
+
+    function rejectCookieConsent(){
+      setCookieConsent('necessary');
+      hideCookieBanner();
+    }
+
+    function initCookieConsent(){
+      const consent = getCookieConsent();
+      if(consent === 'accepted'){
+        loadGoogleMap();
+        return;
+      }
+      if(!consent) showCookieBanner();
+    }
+
+    function openLegalModal(id){
+      const modal = document.getElementById(id);
+      if(!modal) return;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeLegalModal(id){
+      const modal = document.getElementById(id);
+      if(!modal) return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('modal-open');
     }
 
     function applyPlaceholders(lang){
@@ -2969,37 +3344,67 @@
 
     let menuSlideIndex = 0;
 
-    function updateMenuCarousel(){
+    function updateMenuCarousel(shouldScroll = false){
       const slides = Array.from(document.querySelectorAll('[data-menu-slide]'));
       if(!slides.length) return;
 
       menuSlideIndex = (menuSlideIndex + slides.length) % slides.length;
+      const isMobileCarousel = window.innerWidth <= 780;
+      const grid = document.querySelector('.menu-grid');
 
       slides.forEach((slide, index) => {
         const isActive = index === menuSlideIndex;
         slide.classList.toggle('active', isActive);
-        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        slide.setAttribute('aria-hidden', isMobileCarousel && !isActive ? 'true' : 'false');
       });
+
+      if(shouldScroll && isMobileCarousel && grid){
+        const target = slides[menuSlideIndex].offsetLeft;
+        if(typeof grid.scrollTo === 'function'){
+          grid.scrollTo({left:target, behavior:'smooth'});
+        }else{
+          grid.scrollLeft = target;
+        }
+      }
     }
 
     function changeMenuSlide(delta){
       menuSlideIndex += delta;
-      updateMenuCarousel();
+      updateMenuCarousel(true);
     }
 
     function initMenuCarouselSwipe(){
-      const carousel = document.querySelector('[data-menu-carousel]');
-      if(!carousel) return;
+      const grid = document.querySelector('.menu-grid');
+      if(!grid) return;
 
-      let startX = 0;
+      let syncTimer = null;
 
-      carousel.addEventListener('touchstart', (event) => {
-        startX = event.changedTouches[0].clientX;
-      }, {passive:true});
+      grid.addEventListener('scroll', () => {
+        if(window.innerWidth > 780) return;
 
-      carousel.addEventListener('touchend', (event) => {
-        const deltaX = event.changedTouches[0].clientX - startX;
-        if(Math.abs(deltaX) > 42) changeMenuSlide(deltaX > 0 ? -1 : 1);
+        window.clearTimeout(syncTimer);
+        syncTimer = window.setTimeout(() => {
+          const slides = Array.from(document.querySelectorAll('[data-menu-slide]'));
+          if(!slides.length) return;
+
+          const center = grid.scrollLeft + grid.clientWidth / 2;
+          let closestIndex = 0;
+          let closestDistance = Infinity;
+
+          slides.forEach((slide, index) => {
+            const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+            const distance = Math.abs(slideCenter - center);
+            if(distance < closestDistance){
+              closestDistance = distance;
+              closestIndex = index;
+            }
+          });
+
+          if(closestIndex !== menuSlideIndex){
+            menuSlideIndex = closestIndex;
+            updateMenuCarousel();
+          }
+        }, 90);
       }, {passive:true});
     }
 
@@ -3008,6 +3413,7 @@
         closeModal();
         closeTastingModal();
         closeMobileMenu();
+        document.querySelectorAll('.legal-modal.open').forEach(modal => closeLegalModal(modal.id));
       }
     });
 
@@ -3019,12 +3425,20 @@
       if(event.target.id === 'tastingModal') closeTastingModal();
     });
 
+    document.querySelectorAll('.legal-modal').forEach(modal => {
+      modal.addEventListener('click', (event) => {
+        if(event.target === modal) closeLegalModal(modal.id);
+      });
+    });
+
     window.addEventListener('resize', () => {
       if(window.innerWidth > 780) closeMobileMenu();
+      updateMenuCarousel();
     });
 
     setLanguage('it');
     preloadMenuImages();
+    initCookieConsent();
     updateStoryCarousel();
     initStoryCarouselSwipe();
     updateMenuCarousel();
