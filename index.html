@@ -3380,6 +3380,7 @@
       if(!grid) return;
 
       let syncTimer = null;
+      let startX = 0;
 
       grid.addEventListener('scroll', () => {
         if(window.innerWidth > 780) return;
@@ -3407,6 +3408,36 @@
             updateMenuCarousel();
           }
         }, 90);
+      }, {passive:true});
+
+      grid.addEventListener('touchstart', (event) => {
+        if(window.innerWidth > 780) return;
+        startX = event.changedTouches[0].clientX;
+      }, {passive:true});
+
+      grid.addEventListener('touchend', (event) => {
+        if(window.innerWidth > 780) return;
+
+        const slides = Array.from(document.querySelectorAll('[data-menu-slide]'));
+        if(!slides.length) return;
+
+        const deltaX = event.changedTouches[0].clientX - startX;
+        if(Math.abs(deltaX) < 46) return;
+
+        const isForwardSwipe = deltaX < 0;
+        const isBackwardSwipe = deltaX > 0;
+        const lastIndex = slides.length - 1;
+        const currentIndex = Math.round(grid.scrollLeft / Math.max(grid.clientWidth,1));
+
+        if(isForwardSwipe && currentIndex >= lastIndex){
+          menuSlideIndex = 0;
+          updateMenuCarousel(true);
+        }
+
+        if(isBackwardSwipe && currentIndex <= 0){
+          menuSlideIndex = lastIndex;
+          updateMenuCarousel(true);
+        }
       }, {passive:true});
     }
 
