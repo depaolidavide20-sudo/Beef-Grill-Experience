@@ -28,12 +28,9 @@
       --text:#f8f2eb;
       --text-soft:#ead9c8;
       --muted:#c9b6a2;
-      --gold:#9fa6ad;
-      --gold-2:#eef3f7;
-      --gold-3:#ffffff;
-      --metal-dark:#757d86;
-      --metal-mid:#bfc6ce;
-      --metal-light:#ffffff;
+      --gold:#c8ced4;
+      --gold-2:#dfe4e9;
+      --gold-3:#eef1f4;
       --accent:#8d1f14;
       --accent-2:#b53324;
       --shadow-xl:0 30px 80px rgba(0,0,0,.48);
@@ -269,13 +266,9 @@
     }
 
     .lang-btn.active{
-      background:
-        linear-gradient(145deg,#f9fbfd 0%,#b9c0c8 32%,#ffffff 50%,#8f98a2 74%,#edf2f7 100%);
+      background:var(--gold);
       color:#101214;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.88),
-        inset 0 -1px 0 rgba(75,82,90,.32),
-        0 8px 18px rgba(184,190,198,.24);
+      box-shadow:0 8px 18px rgba(200,206,212,.18);
     }
 
     .nav-cta,
@@ -303,51 +296,21 @@
     .cta,
     .review-cta{
       color:#101214;
-      background:
-        linear-gradient(145deg,#fbfdff 0%,#b9c0c8 30%,#ffffff 48%,#87909a 72%,#e6edf2 100%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.92),
-        inset 0 -2px 0 rgba(69,76,84,.26),
-        0 16px 34px rgba(184,190,198,.26),
-        0 0 22px rgba(255,255,255,.08);
-    }
-
-    .nav-cta::before,
-    .cta::before,
-    .review-cta::before,
-    .lang-btn.active::before{
-      content:"";
-      position:absolute;
-      inset:1px 1px auto;
-      height:48%;
-      border-radius:inherit;
-      background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,255,255,0));
-      pointer-events:none;
-      opacity:.72;
-    }
-
-    .nav-cta > *,
-    .cta > *,
-    .review-cta > *,
-    .lang-btn.active{
-      position:relative;
-      z-index:1;
+      background:var(--gold);
+      box-shadow:0 14px 30px rgba(200,206,212,.18);
     }
 
     .btn-secondary{
       color:#fff;
-      background:
-        linear-gradient(145deg,rgba(255,255,255,.14),rgba(159,166,173,.08) 38%,rgba(255,255,255,.05) 55%,rgba(117,125,134,.12));
-      border:1px solid rgba(225,232,238,.24);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.18),
-        inset 0 -1px 0 rgba(0,0,0,.28);
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(223,228,233,.22);
+      box-shadow:none;
     }
 
     .ghost-btn{
       color:var(--gold-2);
-      background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(159,166,173,.05));
-      border:1px solid rgba(225,232,238,.16);
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(223,228,233,.16);
     }
 
     .nav-cta:hover,
@@ -370,10 +333,9 @@
       position:relative;
       overflow:hidden;
       background:
-        radial-gradient(circle at 72% 44%, rgba(255,255,255,.08), transparent 22%),
-        linear-gradient(90deg,rgba(0,0,0,.50) 0%,rgba(0,0,0,.24) 32%,rgba(0,0,0,.00) 62%,rgba(0,0,0,.02) 100%),
-        linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.16)),
-        url('hero-cover-desktop.png') center center / cover no-repeat;
+        linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.16) 34%,rgba(0,0,0,0) 58%),
+        linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.08)),
+        url('hero-cover-desktop.png') right center / cover no-repeat;
     }
 
     .hero::before{
@@ -381,8 +343,7 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.10) 38%,rgba(0,0,0,0) 100%),
-        radial-gradient(circle at 80% 24%, rgba(255,255,255,.06), transparent 22%);
+        linear-gradient(90deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.06) 34%,rgba(0,0,0,0) 78%);
       pointer-events:none;
     }
 
@@ -391,7 +352,7 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.02) 34%,rgba(0,0,0,.20) 100%);
+        linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.01) 42%,rgba(0,0,0,.10) 100%);
       pointer-events:none;
     }
 
@@ -988,8 +949,7 @@
       padding:15px 30px;
       border-radius:999px;
       border:1px solid rgba(225,232,238,.30);
-      background:
-        linear-gradient(145deg,#fbfdff 0%,#b9c0c8 30%,#ffffff 48%,#87909a 72%,#e6edf2 100%);
+      background:var(--gold);
       color:#101214;
       font-weight:800;
       font-size:15px;
@@ -1391,7 +1351,7 @@
 
     .map-consent button,
     .cookie-accept{
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      background:var(--gold);
       color:#1d130a;
     }
 
@@ -1625,7 +1585,7 @@
     }
 
     .tasting-tab.active{
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      background:var(--gold);
       color:#1c130a;
       border-color:transparent;
     }
