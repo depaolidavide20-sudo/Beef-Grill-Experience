@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" translate="no" class="notranslate">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Beef Grill Experience - Ristorante di Carne a Chiavari</title>
+  <meta name="google" content="notranslate" />
   <meta name="description" content="Beef Grill Experience a Chiavari: ristorante di carne premium con specialità alla brace, tartare, costine, tagliata, carne argentina e wagyu alla fiamma." />
   <meta name="theme-color" content="#0b0908" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,9 +28,9 @@
       --text:#f8f2eb;
       --text-soft:#ead9c8;
       --muted:#c9b6a2;
-      --gold:#d7a35d;
-      --gold-2:#f1c27a;
-      --gold-3:#ffdeb0;
+      --gold:#b8bec6;
+      --gold-2:#edf2f7;
+      --gold-3:#ffffff;
       --accent:#8d1f14;
       --accent-2:#b53324;
       --shadow-xl:0 30px 80px rgba(0,0,0,.48);
@@ -44,7 +45,13 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{
+      scroll-behavior:smooth;
+      width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+      overscroll-behavior-x:none;
+    }
     body{
       margin:0;
       font-family:Inter,sans-serif;
@@ -55,9 +62,14 @@
       overflow-x:hidden;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
+      width:100%;
+      max-width:100%;
+      overscroll-behavior-x:none;
     }
 
-    body.modal-open{overflow:hidden}
+    body.modal-open{
+      overflow:hidden;
+    }
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%}
     button,input,textarea,select{font:inherit}
@@ -71,7 +83,7 @@
     }
 
     :focus-visible{
-      outline:2px solid rgba(241,194,122,.9);
+      outline:2px solid rgba(225,232,238,.9);
       outline-offset:2px;
     }
 
@@ -180,7 +192,7 @@
         radial-gradient(circle at 50% 0%,rgba(255,255,255,.08),transparent 48%),
         linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),
         #030303;
-      border:1px solid rgba(215,163,93,.32);
+      border:1px solid rgba(184,190,198,.32);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
         0 16px 34px rgba(0,0,0,.32);
@@ -254,7 +266,7 @@
     .lang-btn.active{
       background:linear-gradient(135deg,var(--gold),var(--gold-2));
       color:#1c130a;
-      box-shadow:0 8px 18px rgba(215,163,93,.22);
+      box-shadow:0 8px 18px rgba(184,190,198,.22);
     }
 
     .nav-cta,
@@ -281,7 +293,7 @@
     .review-cta{
       color:#1d130a;
       background:linear-gradient(135deg,var(--gold),var(--gold-2));
-      box-shadow:0 14px 30px rgba(215,163,93,.24);
+      box-shadow:0 14px 30px rgba(184,190,198,.24);
     }
 
     .btn-secondary{
@@ -293,7 +305,7 @@
     .ghost-btn{
       color:var(--gold-2);
       background:rgba(255,255,255,.04);
-      border:1px solid rgba(241,194,122,.16);
+      border:1px solid rgba(225,232,238,.16);
     }
 
     .nav-cta:hover,
@@ -316,7 +328,7 @@
       position:relative;
       overflow:hidden;
       background:
-        radial-gradient(circle at 22% 20%, rgba(215,163,93,.14), transparent 28%),
+        radial-gradient(circle at 22% 20%, rgba(184,190,198,.14), transparent 28%),
         linear-gradient(90deg,rgba(0,0,0,.60) 0%,rgba(0,0,0,.32) 32%,rgba(0,0,0,.04) 62%,rgba(0,0,0,.08) 100%),
         linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.36)),
         url('hero-cover-desktop.png') center center / cover no-repeat;
@@ -328,7 +340,7 @@
       inset:0;
       background:
         linear-gradient(90deg,rgba(0,0,0,.36) 0%,rgba(0,0,0,.16) 40%,rgba(0,0,0,.04) 100%),
-        radial-gradient(circle at 82% 18%, rgba(255,222,176,.10), transparent 22%);
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,.10), transparent 22%);
       pointer-events:none;
     }
 
@@ -419,7 +431,7 @@
 
     .hero-social:hover{
       transform:translateY(-2px);
-      border-color:rgba(241,194,122,.36);
+      border-color:rgba(225,232,238,.36);
       background:rgba(255,255,255,.07);
     }
 
@@ -528,7 +540,7 @@
       inset:auto -40px -60px auto;
       width:180px;
       height:180px;
-      background:radial-gradient(circle, rgba(241,194,122,.18), transparent 70%);
+      background:radial-gradient(circle, rgba(225,232,238,.18), transparent 70%);
       pointer-events:none;
       display:none;
     }
@@ -586,7 +598,7 @@
     }
 
     input:focus,textarea:focus,select:focus{
-      border-color:rgba(241,194,122,.45);
+      border-color:rgba(225,232,238,.45);
       background:rgba(255,255,255,.10);
     }
 
@@ -756,8 +768,8 @@
 
     .story-arrow:hover{
       transform:translateY(-50%) scale(1.04);
-      background:rgba(215,163,93,.16);
-      border-color:rgba(241,194,122,.34);
+      background:rgba(184,190,198,.16);
+      border-color:rgba(225,232,238,.34);
     }
 
     .story-arrow svg{
@@ -823,6 +835,10 @@
       will-change:transform,background-size;
     }
 
+    .dish-card[data-menu-clone]{
+      display:none;
+    }
+
     .dish-card-media{
       position:absolute;
       inset:0;
@@ -856,9 +872,9 @@
       transform:translateY(-7px) scale(1.012);
       box-shadow:
         0 28px 58px rgba(0,0,0,.46),
-        0 0 0 1px rgba(241,194,122,.20),
-        0 0 28px rgba(241,194,122,.12);
-      border-color:rgba(241,194,122,.30);
+        0 0 0 1px rgba(225,232,238,.20),
+        0 0 28px rgba(225,232,238,.12);
+      border-color:rgba(225,232,238,.30);
       background-size:cover;
       filter:saturate(1.04) contrast(1.02);
     }
@@ -910,7 +926,7 @@
       width:2px;
       height:32px;
       border-radius:999px;
-      background:linear-gradient(180deg,rgba(241,194,122,.95),rgba(241,194,122,.28));
+      background:linear-gradient(180deg,rgba(225,232,238,.95),rgba(225,232,238,.28));
       box-shadow:0 8px 22px rgba(0,0,0,.30);
       flex:0 0 auto;
     }
@@ -929,13 +945,13 @@
       min-height:58px;
       padding:15px 30px;
       border-radius:999px;
-      border:1px solid rgba(241,194,122,.30);
+      border:1px solid rgba(225,232,238,.30);
       background:linear-gradient(135deg,var(--gold),var(--gold-2));
       color:#1c130a;
       font-weight:800;
       font-size:15px;
       cursor:pointer;
-      box-shadow:0 20px 46px rgba(215,163,93,.24);
+      box-shadow:0 20px 46px rgba(184,190,198,.24);
       transition:transform .24s ease, box-shadow .24s ease, filter .24s ease;
       position:relative;
       overflow:hidden;
@@ -952,7 +968,7 @@
 
     .tasting-trigger:hover{
       transform:translateY(-3px);
-      box-shadow:0 26px 52px rgba(215,163,93,.34);
+      box-shadow:0 26px 52px rgba(184,190,198,.34);
       filter:saturate(1.03);
     }
 
@@ -998,7 +1014,7 @@
       font-family:"Cormorant Garamond",serif;
       font-size:84px;
       line-height:1;
-      color:rgba(241,194,122,.14);
+      color:rgba(225,232,238,.14);
       pointer-events:none;
     }
 
@@ -1206,7 +1222,7 @@
 
     .social-link:hover{
       transform:translateY(-2px);
-      border-color:rgba(241,194,122,.32);
+      border-color:rgba(225,232,238,.32);
       background:rgba(255,255,255,.08);
     }
 
@@ -1263,14 +1279,14 @@
       color:inherit;
       cursor:pointer;
       text-decoration:underline;
-      text-decoration-color:rgba(241,194,122,.28);
+      text-decoration-color:rgba(225,232,238,.28);
       text-underline-offset:4px;
       transition:color .2s ease, text-decoration-color .2s ease;
     }
 
     .footer-policy-links button:hover{
       color:var(--gold-2);
-      text-decoration-color:rgba(241,194,122,.72);
+      text-decoration-color:rgba(225,232,238,.72);
     }
 
     .map-consent{
@@ -1284,7 +1300,7 @@
       text-align:center;
       color:var(--muted);
       background:
-        radial-gradient(circle at 50% 0%,rgba(241,194,122,.10),transparent 34%),
+        radial-gradient(circle at 50% 0%,rgba(225,232,238,.10),transparent 34%),
         linear-gradient(180deg,#15110f,#0e0c0a);
     }
 
@@ -1306,7 +1322,7 @@
     .cookie-actions button{
       min-height:44px;
       border-radius:999px;
-      border:1px solid rgba(241,194,122,.26);
+      border:1px solid rgba(225,232,238,.26);
       padding:10px 18px;
       cursor:pointer;
       font-weight:800;
@@ -1686,6 +1702,15 @@
         --header-h:76px;
       }
 
+      html,
+      body{
+        position:relative;
+        width:100%;
+        max-width:100%;
+        overflow-x:hidden;
+        overscroll-behavior-x:none;
+      }
+
       .desktop-only{display:none !important}
       .mobile-only{display:block !important}
 
@@ -1703,7 +1728,7 @@
 
       .topbar{
         background:linear-gradient(180deg,rgba(10,8,7,.82),rgba(10,8,7,.66));
-        border-bottom:1px solid rgba(215,163,93,.12);
+        border-bottom:1px solid rgba(184,190,198,.12);
         backdrop-filter:blur(18px) saturate(1.08);
         -webkit-backdrop-filter:blur(18px) saturate(1.08);
         box-shadow:0 10px 24px rgba(0,0,0,.16);
@@ -1807,7 +1832,7 @@
         border-radius:14px;
         padding:5px 8px;
         background:#030303;
-        border:1px solid rgba(215,163,93,.18);
+        border:1px solid rgba(184,190,198,.18);
         box-shadow:
           inset 0 1px 0 rgba(255,255,255,.04),
           0 10px 22px rgba(0,0,0,.16);
@@ -1816,7 +1841,7 @@
       .hero{
         min-height:calc(100svh - var(--header-h));
         background:
-          radial-gradient(circle at 50% 28%, rgba(215,163,93,.10), transparent 30%),
+          radial-gradient(circle at 50% 28%, rgba(184,190,198,.10), transparent 30%),
           linear-gradient(180deg,rgba(255,255,255,.02) 0%,rgba(0,0,0,.06) 32%,rgba(0,0,0,.46) 54%,rgba(0,0,0,.16) 78%,rgba(0,0,0,.05) 100%),
           url('hero-cover-mobile.png') center center / cover no-repeat;
       }
@@ -2001,9 +2026,12 @@
         gap:0;
         overflow-x:auto;
         overflow-y:hidden;
+        max-width:100%;
         scroll-snap-type:x mandatory;
         scroll-behavior:smooth;
         -webkit-overflow-scrolling:touch;
+        overscroll-behavior-x:contain;
+        touch-action:pan-x;
         aspect-ratio:1.06 / 1;
         height:clamp(340px,94vw,430px);
         min-height:340px;
@@ -2035,6 +2063,10 @@
         box-shadow:
           0 26px 58px rgba(0,0,0,.44),
           0 0 0 1px rgba(255,255,255,.05);
+      }
+
+      .dish-card[data-menu-clone]{
+        display:flex;
       }
 
       .dish-card.active{
@@ -2141,7 +2173,7 @@
         justify-content:center;
         gap:8px;
         font-size:12px;
-        box-shadow:0 10px 22px rgba(215,163,93,.16);
+        box-shadow:0 10px 22px rgba(184,190,198,.16);
       }
 
       .tasting-trigger .menu-icon{
@@ -2207,14 +2239,18 @@
 
       .modal,
       .tasting-modal{
-        padding:10px;
+        align-items:center;
+        justify-content:center;
+        padding:calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom));
+        min-height:100svh;
       }
 
       .modal-box,
       .tasting-box{
-        width:100%;
+        width:min(100%,430px);
+        margin:auto;
         border-radius:24px;
-        max-height:88svh;
+        max-height:min(88svh,720px);
       }
 
       .modal-box{
@@ -2442,7 +2478,7 @@
     }
   </style>
 </head>
-<body>
+<body translate="no" class="notranslate">
   <svg class="svg-sprite" aria-hidden="true" focusable="false">
     <symbol id="whatsapp-mark" viewBox="0 0 24 24">
       <path d="M12.1 3.3c-4.92 0-8.9 3.72-8.9 8.32 0 1.58.48 3.08 1.31 4.32l-1.06 4.83 5.06-1.32c1.22.62 2.62.97 4.1.97 4.92 0 8.9-3.72 8.9-8.32S17.02 3.3 12.1 3.3Z" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
@@ -3207,6 +3243,10 @@
     function setLanguage(lang, clickedBtn = null){
       currentLanguage = lang;
       document.documentElement.lang = lang;
+      document.documentElement.setAttribute('translate','no');
+      document.documentElement.classList.add('notranslate');
+      document.body.setAttribute('translate','no');
+      document.body.classList.add('notranslate');
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const value = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-it');
@@ -3346,6 +3386,40 @@
 
     let menuSlideIndex = 0;
 
+    function setupMenuInfiniteLoop(){
+      const grid = document.querySelector('.menu-grid');
+      if(!grid || grid.dataset.loopReady === 'true') return;
+
+      const slides = Array.from(document.querySelectorAll('[data-menu-slide]'));
+      if(slides.length < 2) return;
+
+      const lastClone = slides[slides.length - 1].cloneNode(true);
+      lastClone.removeAttribute('data-menu-slide');
+      lastClone.setAttribute('data-menu-clone','last');
+      lastClone.setAttribute('aria-hidden','true');
+
+      const firstClone = slides[0].cloneNode(true);
+      firstClone.removeAttribute('data-menu-slide');
+      firstClone.setAttribute('data-menu-clone','first');
+      firstClone.setAttribute('aria-hidden','true');
+
+      grid.insertBefore(lastClone, slides[0]);
+      grid.appendChild(firstClone);
+      grid.dataset.loopReady = 'true';
+    }
+
+    function jumpMenuGridTo(left){
+      const grid = document.querySelector('.menu-grid');
+      if(!grid) return;
+
+      const previousScrollBehavior = grid.style.scrollBehavior;
+      grid.style.scrollBehavior = 'auto';
+      grid.scrollLeft = left;
+      requestAnimationFrame(() => {
+        grid.style.scrollBehavior = previousScrollBehavior;
+      });
+    }
+
     function updateMenuCarousel(shouldScroll = false){
       const slides = Array.from(document.querySelectorAll('[data-menu-slide]'));
       if(!slides.length) return;
@@ -3380,7 +3454,6 @@
       if(!grid) return;
 
       let syncTimer = null;
-      let startX = 0;
 
       grid.addEventListener('scroll', () => {
         if(window.innerWidth > 780) return;
@@ -3389,6 +3462,24 @@
         syncTimer = window.setTimeout(() => {
           const slides = Array.from(document.querySelectorAll('[data-menu-slide]'));
           if(!slides.length) return;
+
+          const firstClone = grid.querySelector('[data-menu-clone="first"]');
+          const lastClone = grid.querySelector('[data-menu-clone="last"]');
+          const edgeTolerance = Math.max(24,grid.clientWidth * .12);
+
+          if(firstClone && grid.scrollLeft >= firstClone.offsetLeft - edgeTolerance){
+            menuSlideIndex = 0;
+            updateMenuCarousel();
+            jumpMenuGridTo(slides[0].offsetLeft);
+            return;
+          }
+
+          if(lastClone && grid.scrollLeft <= lastClone.offsetLeft + edgeTolerance){
+            menuSlideIndex = slides.length - 1;
+            updateMenuCarousel();
+            jumpMenuGridTo(slides[slides.length - 1].offsetLeft);
+            return;
+          }
 
           const center = grid.scrollLeft + grid.clientWidth / 2;
           let closestIndex = 0;
@@ -3408,36 +3499,6 @@
             updateMenuCarousel();
           }
         }, 90);
-      }, {passive:true});
-
-      grid.addEventListener('touchstart', (event) => {
-        if(window.innerWidth > 780) return;
-        startX = event.changedTouches[0].clientX;
-      }, {passive:true});
-
-      grid.addEventListener('touchend', (event) => {
-        if(window.innerWidth > 780) return;
-
-        const slides = Array.from(document.querySelectorAll('[data-menu-slide]'));
-        if(!slides.length) return;
-
-        const deltaX = event.changedTouches[0].clientX - startX;
-        if(Math.abs(deltaX) < 46) return;
-
-        const isForwardSwipe = deltaX < 0;
-        const isBackwardSwipe = deltaX > 0;
-        const lastIndex = slides.length - 1;
-        const currentIndex = Math.round(grid.scrollLeft / Math.max(grid.clientWidth,1));
-
-        if(isForwardSwipe && currentIndex >= lastIndex){
-          menuSlideIndex = 0;
-          updateMenuCarousel(true);
-        }
-
-        if(isBackwardSwipe && currentIndex <= 0){
-          menuSlideIndex = lastIndex;
-          updateMenuCarousel(true);
-        }
       }, {passive:true});
     }
 
@@ -3466,7 +3527,8 @@
 
     window.addEventListener('resize', () => {
       if(window.innerWidth > 780) closeMobileMenu();
-      updateMenuCarousel();
+      setupMenuInfiniteLoop();
+      updateMenuCarousel(window.innerWidth <= 780);
     });
 
     setLanguage('it');
@@ -3474,7 +3536,8 @@
     initCookieConsent();
     updateStoryCarousel();
     initStoryCarouselSwipe();
-    updateMenuCarousel();
+    setupMenuInfiniteLoop();
+    updateMenuCarousel(window.innerWidth <= 780);
     initMenuCarouselSwipe();
   </script>
 </body>
